@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">FitMotion</string>
+    <string name="welcome_description">Get ready for personalized recommendations to optimize your health and elevate your lifestyle</string>
+    <string name="welcome_title">Welcome to FitMotion</string>
+    <string name="welcome_logo_text">FitMotion</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="sign_in">Sign In</string>
 </resources>

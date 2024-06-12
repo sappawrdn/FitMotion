@@ -3,7 +3,7 @@
     <style name="App.Starting.Theme" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">#FFFF</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/avd_fitmotion</item>
-        <item name="windowSplashScreenAnimationDuration">1000</item>
+        <item name="windowSplashScreenAnimationDuration">1500</item>
         <item name="postSplashScreenTheme">@style/Theme.FitMotion</item>
     </style>
 
