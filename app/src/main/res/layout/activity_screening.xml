@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/screening_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your current \ncondition"
+        android:fontFamily="@font/montserrat_extrabold"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="@id/guidelineVertical"
+        app:layout_constraintTop_toBottomOf="@id/guidelineHorizontal"/>
+
+    <TextView
+        android:id="@+id/screening_desc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="we need your current information to \ndetermine the training method"
+        app:layout_constraintStart_toStartOf="@id/guidelineVertical"
+        app:layout_constraintTop_toBottomOf="@id/screening_title"
+        app:layout_constraintEnd_toEndOf="@id/guidelineVertical2"
+        android:layout_marginTop="12dp"
+        android:textSize="17sp"
+        android:fontFamily="@font/montserrat_regular"/>
+
+    <TextView
+        android:id="@+id/weight_title"
+        android:layout_width="wrap_content"
+        android:textColor="@color/black"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/screening_desc"
+        android:text="Weight (Kg)"
+        app:layout_constraintStart_toStartOf="@id/guidelineVertical"
+        android:fontFamily="@font/montserrat_regular"
+        android:textSize="17sp"
+        android:layout_marginTop="25dp"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/weightEditTextLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/guidelineVertical2"
+        app:layout_constraintStart_toStartOf="@id/guidelineVertical"
+        app:layout_constraintTop_toBottomOf="@+id/weight_title"
+        app:boxCornerRadiusBottomEnd="15dp"
+        app:boxCornerRadiusBottomStart="15dp"
+        app:boxCornerRadiusTopEnd="15dp"
+        app:boxCornerRadiusTopStart="15dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/weightEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:fontFamily="@font/montserrat_regular"
+            android:inputType="number"
+            android:paddingStart="48dp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/height_title"
+        android:layout_width="wrap_content"
+        android:textColor="@color/black"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/weightEditTextLayout"
+        android:text="Height (Cm)"
+        app:layout_constraintStart_toStartOf="@id/guidelineVertical"
+        android:fontFamily="@font/montserrat_regular"
+        android:textSize="17sp"
+        android:layout_marginTop="12dp"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/heightEditTextLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/guidelineVertical2"
+        app:layout_constraintStart_toStartOf="@id/guidelineVertical"
+        app:layout_constraintTop_toBottomOf="@+id/height_title"
+        app:boxCornerRadiusBottomEnd="15dp"
+        app:boxCornerRadiusBottomStart="15dp"
+        app:boxCornerRadiusTopEnd="15dp"
+        app:boxCornerRadiusTopStart="15dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/heightEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:fontFamily="@font/montserrat_regular"
+            android:inputType="number"
+            android:paddingStart="48dp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/illness_title"
+        android:layout_width="wrap_content"
+        android:textColor="@color/black"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/heightEditTextLayout"
+        android:text="What illness are you dealing with now?"
+        app:layout_constraintStart_toStartOf="@id/guidelineVertical"
+        android:fontFamily="@font/montserrat_regular"
+        android:textSize="17sp"
+        android:layout_marginTop="12dp"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/illnessEditTextLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/guidelineVertical2"
+        app:layout_constraintStart_toStartOf="@id/guidelineVertical"
+        app:layout_constraintTop_toBottomOf="@+id/illness_title"
+        app:boxCornerRadiusBottomEnd="15dp"
+        app:boxCornerRadiusBottomStart="15dp"
+        app:boxCornerRadiusTopEnd="15dp"
+        app:boxCornerRadiusTopStart="15dp">
+
+        <AutoCompleteTextView
+            android:id="@+id/illnessAutoComplete"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:inputType="none"
+            android:fontFamily="@font/montserrat_regular"
+            android:hint="Select an option"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintGuide_percent="0.05"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineVertical"
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintGuide_percent="0.05"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineVertical2"
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintGuide_percent="0.95"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
