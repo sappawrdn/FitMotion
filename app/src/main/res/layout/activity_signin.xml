@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/white">
 
     <ImageView
@@ -103,7 +104,18 @@
             android:paddingStart="48dp"/>
     </com.google.android.material.textfield.TextInputLayout>
 
+    <ProgressBar
+        android:id="@+id/progbar_signin"
+        style="@style/CustomProgressBar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="invisible"
+        app:layout_anchorGravity="center"/>
+
     <Button
+        android:id="@+id/button_signin"
         android:layout_width="0dp"
         android:layout_height="55dp"
         app:layout_constraintStart_toStartOf="@id/guidelineVertical"

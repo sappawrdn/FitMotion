@@ -173,6 +173,16 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <ProgressBar
+        android:id="@+id/progbar_setgoals"
+        style="@style/CustomProgressBar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="invisible"
+        app:layout_anchorGravity="center"/>
+
     <Button
         android:id="@+id/signin_button"
         android:layout_width="0dp"

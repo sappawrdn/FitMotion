@@ -5,7 +5,7 @@
     <string name="welcome_logo_text">FitMotion</string>
     <string name="sign_up">Sign Up</string>
     <string name="sign_in">Sign In</string>
-    
+
     <string-array name="illness">
         <item>Diabetes</item>
         <item>Sakit Jantung</item>
@@ -13,4 +13,6 @@
         <item>Tipes</item>
         <item>Sakit Jiwa</item>
     </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.fitmotion.HomeFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/achievementFragment"
+        android:name="com.example.fitmotion.AchievementFragment"
+        android:label="Achievement"
+        tools:layout="@layout/fragment_achievement" />
+    <fragment
+        android:id="@+id/sensorFragment"
+        android:name="com.example.fitmotion.SensorFragment"
+        android:label="Sensor"
+        tools:layout="@layout/fragment_sensor" />
+    <fragment
+        android:id="@+id/friendFragment"
+        android:name="com.example.fitmotion.FriendsFragment"
+        android:label="Friend"
+        tools:layout="@layout/fragment_friends" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.fitmotion.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile" />
+</navigation>
