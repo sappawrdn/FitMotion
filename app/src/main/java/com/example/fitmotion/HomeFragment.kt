@@ -76,7 +76,7 @@ class HomeFragment : Fragment() {
                 if (response.isSuccessful) {
                     val responseBody = response.body()
                     if (responseBody != null) {
-                        val temperature = responseBody.main?.temp.toString()
+                        val temperature = responseBody.main?.temp?.toInt().toString()
                         val condition = responseBody.weather?.firstOrNull()?.main ?: "unknown"
 
                         Log.d("WeatherData", "$temperature and $condition")
