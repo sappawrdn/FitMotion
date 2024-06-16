@@ -1,4 +1,4 @@
-package com.example.fitmotion
+package com.example.fitmotion.Weather
 
 import retrofit2.Call
 import retrofit2.http.GET

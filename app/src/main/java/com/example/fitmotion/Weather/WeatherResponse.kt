@@ -1,4 +1,4 @@
-package com.example.fitmotion
+package com.example.fitmotion.Weather
 
 import com.google.gson.annotations.SerializedName
 

@@ -15,6 +15,7 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "BASE_URL", "\"https://fitmotion-core-api-qoladrxgiq-et.a.run.app/\"")
     }
 
     buildTypes {
@@ -33,6 +34,7 @@ android {
 
     buildFeatures{
         viewBinding = true
+        buildConfig = true
     }
     kotlinOptions {
         jvmTarget = "1.8"
@@ -58,6 +60,10 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:2.11.0")
     implementation ("com.squareup.okhttp3:logging-interceptor:4.9.1")
     implementation ("com.airbnb.android:lottie:4.0.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2")
+    implementation ("androidx.datastore:datastore-preferences:1.0.0")
+    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.3.1")
 
 
 }
