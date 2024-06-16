@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         installSplashScreen()
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(R.layout.activity_main)
+        setContentView(binding.root)
 
         viewModel.getSession().observe(this) { user ->
             if (!user.isLogin) {
@@ -42,7 +42,6 @@ class MainActivity : AppCompatActivity() {
         bottomNavigationView.setupWithNavController(navController)
 
         setupView()
-
     }
 
     private fun setupView() {

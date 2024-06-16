@@ -5,6 +5,10 @@
     <string name="welcome_logo_text">FitMotion</string>
     <string name="sign_up">Sign Up</string>
     <string name="sign_in">Sign In</string>
+    <string name="username_display">Username</string>
+    <string name="friends_display">Friends</string>
+    <string name="achievement_display">Achievement</string>
+    <string name="edit">Edit</string>
 
     <string-array name="illness">
         <item>Diabetes</item>
