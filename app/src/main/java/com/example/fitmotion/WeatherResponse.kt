@@ -80,7 +80,7 @@ data class WeatherItem(
 data class Main(
 
 	@field:SerializedName("temp")
-	val temp: Int? = null,
+	val temp: Double? = null,
 
 	@field:SerializedName("temp_min")
 	val tempMin: Double? = null,
