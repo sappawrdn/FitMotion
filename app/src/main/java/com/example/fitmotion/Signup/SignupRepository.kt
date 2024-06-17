@@ -4,7 +4,8 @@ class SignupRepository private constructor(
     private val signupApiService: SignupApiService
 ) {
     suspend fun signupRepo(username: String, email: String, password: String): SignupResponse{
-        return signupApiService.signup(username, email, password)
+        val signupRequest = SignupRequest(username, email, password)
+        return signupApiService.signup(signupRequest)
     }
 
     companion object{

@@ -1,6 +1,8 @@
 package com.example.fitmotion.DI
 
 import android.content.Context
+import com.example.fitmotion.Signin.SigninApiConfig
+import com.example.fitmotion.Signin.SigninRepository
 import com.example.fitmotion.Signup.SignupApiConfig
 import com.example.fitmotion.Signup.SignupRepository
 import com.example.fitmotion.UserHelper.UserPreference
@@ -17,5 +19,10 @@ object Injection {
     fun provideUserRepository(context: Context): UserRepository {
         val pref = UserPreference.getInstance(context.dataStore)
         return UserRepository.getInstance(pref)
+    }
+
+    fun provideSigninRepository(): SigninRepository{
+        val apiService = SigninApiConfig.getSigninApiService()
+        return SigninRepository.getInstance(apiService)
     }
 }

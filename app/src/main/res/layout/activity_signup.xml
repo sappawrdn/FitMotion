@@ -191,6 +191,7 @@
         app:layout_anchorGravity="center"/>
     
     <Button
+        android:id="@+id/signup_button"
         android:layout_width="0dp"
         android:layout_height="55dp"
         app:layout_constraintStart_toStartOf="@id/guidelineVertical"
