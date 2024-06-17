@@ -12,7 +12,7 @@
     <fragment
         android:id="@+id/achievementFragment"
         android:name="com.example.fitmotion.AchievementFragment"
-        android:label="Achievement"
+        android:label="Milestone"
         tools:layout="@layout/fragment_achievement" />
     <fragment
         android:id="@+id/sensorFragment"
@@ -20,7 +20,7 @@
         android:label="Sensor"
         tools:layout="@layout/fragment_sensor" />
     <fragment
-        android:id="@+id/friendFragment"
+        android:id="@+id/friendsFragment"
         android:name="com.example.fitmotion.FriendsFragment"
         android:label="Friend"
         tools:layout="@layout/fragment_friends" />

@@ -1,30 +1,42 @@
 package com.example.fitmotion
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
+import com.example.fitmotion.databinding.FragmentProfileBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [ProfileFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ProfileFragment : Fragment() {
+
+    private lateinit var binding: FragmentProfileBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false)
+        // Inflate the layout for this fragment using View Binding
+        binding = FragmentProfileBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // Find the edit button from the layout
+        val editButton = binding.buttonEdit
+
+        // Set click listener for the edit button
+        editButton.setOnClickListener {
+            // Intent to start EditProfileActivity
+            val intent = Intent(activity, EditProfileActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     companion object {
+        // If needed, you can add factory methods or other companion object functions here
     }
 }

@@ -8,13 +8,13 @@ import android.view.WindowManager
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import androidx.navigation.findNavController
-import androidx.navigation.ui.setupWithNavController
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
 import com.example.fitmotion.Factory.ViewModelFactory
 import com.example.fitmotion.R
 import com.example.fitmotion.Welcome.WelcomeActivity
 import com.example.fitmotion.databinding.ActivityMainBinding
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.qamar.curvedbottomnaviagtion.CurvedBottomNavigation
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,6 +23,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var navController: NavController
+
+    companion object {
+        val HOME_ITEM = R.id.homeFragment
+        val ACHIEVEMENT_ITEM = R.id.achievementFragment
+        val SENSOR_ITEM = R.id.sensorFragment
+        val FRIENDS_ITEM = R.id.friendsFragment
+        val PROFILE_ITEM = R.id.profileFragment
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
@@ -30,19 +39,58 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        viewModel.getSession().observe(this) { user ->
-            if (!user.isLogin) {
-                startActivity(Intent(this, WelcomeActivity::class.java))
-                finish()
+//        viewModel.getSession().observe(this) { user ->
+//            if (!user.isLogin) {
+//                startActivity(Intent(this, WelcomeActivity::class.java))
+//                finish()
+//            }
+//        }
+
+        initNavHost()
+        binding.setUpBottomNavigation()
+        setupView()
+
+    }
+
+    private fun initNavHost() {
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        navController = navHostFragment.navController
+    }
+
+    private fun ActivityMainBinding.setUpBottomNavigation() {
+        val bottomNavigationItems = mutableListOf(
+            CurvedBottomNavigation.Model(HOME_ITEM, getString(R.string.home_nav), R.drawable.ic_home),
+            CurvedBottomNavigation.Model(ACHIEVEMENT_ITEM, getString(R.string.achieve_nav), R.drawable.ic_achievement),
+            CurvedBottomNavigation.Model(SENSOR_ITEM, getString(R.string.sensor_nav), R.drawable.ic_sensor),
+            CurvedBottomNavigation.Model(FRIENDS_ITEM, getString(R.string.friends_nav), R.drawable.ic_friend),
+            CurvedBottomNavigation.Model(PROFILE_ITEM, getString(R.string.profile_nav), R.drawable.ic_profile)
+        )
+        bottomNavigation.apply {
+            bottomNavigationItems.forEach { add(it) }
+            setOnClickMenuListener {
+                navController.navigate(it.id)
+            }
+            show(HOME_ITEM)
+            setupNavController(navController)
+        }
+    }
+
+
+    override fun onBackPressed() {
+        if (navController.currentDestination!!.id == HOME_ITEM)
+            super.onBackPressed()
+        else {
+            when (navController.currentDestination!!.id) {
+                ACHIEVEMENT_ITEM, SENSOR_ITEM, FRIENDS_ITEM, PROFILE_ITEM -> {
+                    navController.popBackStack(R.id.homeFragment, false)
+                }
+                else -> {
+                    navController.navigateUp()
+                }
             }
         }
-
-        val navController = findNavController(R.id.nav_host_fragment)
-        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
-        bottomNavigationView.setupWithNavController(navController)
-
-        setupView()
     }
+
 
     private fun setupView() {
         @Suppress("DEPRECATION")

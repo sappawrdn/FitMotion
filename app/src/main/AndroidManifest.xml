@@ -24,6 +24,19 @@
             android:name=".Signin.SigninActivity"
             android:exported="false" />
 
+
+        <activity android:name=".DetailsActivity"
+            android:exported="false"/>
+
+        <activity android:name=".EditProfileActivity"
+            android:exported="false"/>
+
+        <activity android:name=".AddFriendActivity"
+            android:exported="false"/>
+
+        <activity android:name=".FriendRequestsActivity"
+            android:exported="false"/>
+
         <activity
             android:name=".main.MainActivity"
             android:exported="true"
@@ -34,6 +47,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>

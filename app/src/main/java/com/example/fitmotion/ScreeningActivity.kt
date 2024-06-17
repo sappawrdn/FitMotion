@@ -17,9 +17,9 @@ class ScreeningActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityScreeningBinding.inflate(layoutInflater)
 
-        val illness = resources.getStringArray(R.array.illness)
-        val arrayAdapter = ArrayAdapter(this, R.layout.dropdown_menu, illness)
-        binding.illnessAutoComplete.setAdapter(arrayAdapter)
+        val gender = resources.getStringArray(R.array.gender)
+        val arrayAdapter = ArrayAdapter(this, R.layout.dropdown_menu, gender)
+        binding.genderAutoComplete.setAdapter(arrayAdapter)
         setContentView(binding.root)
 
         val date = DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->

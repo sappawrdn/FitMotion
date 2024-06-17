@@ -1,5 +1,6 @@
 package com.example.fitmotion
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -48,6 +49,11 @@ class HomeFragment : Fragment() {
         val adapter = ActivitiesAdapter(activities)
         recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         recyclerView.adapter = adapter
+
+        val tvDetails = view.findViewById<TextView>(R.id.tv_details)
+        tvDetails.setOnClickListener {
+            startActivity(Intent(requireContext(), DetailsActivity::class.java))
+        }
     }
 
     private fun createRetrofitService(): WeatherApiService {
