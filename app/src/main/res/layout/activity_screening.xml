@@ -9,8 +9,9 @@
         android:id="@+id/screening_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Your current \ncondition"
+        android:text="Your current condition"
         android:fontFamily="@font/montserrat_extrabold"
+        android:textColor="@color/black"
         android:textSize="25sp"
         app:layout_constraintStart_toStartOf="@id/guidelineVertical"
         app:layout_constraintTop_toBottomOf="@id/guidelineHorizontal"/>
@@ -23,7 +24,7 @@
         app:layout_constraintStart_toStartOf="@id/guidelineVertical"
         app:layout_constraintTop_toBottomOf="@id/screening_title"
         app:layout_constraintEnd_toEndOf="@id/guidelineVertical2"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
         android:textSize="17sp"
         android:fontFamily="@font/montserrat_regular"/>
 
@@ -34,7 +35,7 @@
         android:layout_height="wrap_content"
         android:text="Weight (Kg)"
         android:fontFamily="@font/montserrat_regular"
-        android:textSize="17sp"
+        android:textSize="16sp"
         app:layout_constraintTop_toBottomOf="@+id/screening_desc"
         app:layout_constraintStart_toStartOf="@id/guidelineVertical"
         android:layout_marginTop="25dp"/>
@@ -46,7 +47,7 @@
         android:layout_height="wrap_content"
         android:text="Height (Cm)"
         android:fontFamily="@font/montserrat_regular"
-        android:textSize="17sp"
+        android:textSize="16sp"
         app:layout_constraintTop_toBottomOf="@+id/screening_desc"
         app:layout_constraintStart_toStartOf="@id/heightEditTextLayout"
         android:layout_marginTop="25dp"/>
@@ -108,7 +109,7 @@
         android:text="Date of Birth"
         app:layout_constraintStart_toStartOf="@id/guidelineVertical"
         android:fontFamily="@font/montserrat_regular"
-        android:textSize="17sp"
+        android:textSize="16sp"
         android:layout_marginTop="12dp"/>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -147,7 +148,7 @@
         android:text="Gender"
         app:layout_constraintStart_toStartOf="@id/guidelineVertical"
         android:fontFamily="@font/montserrat_regular"
-        android:textSize="17sp"
+        android:textSize="16sp"
         android:layout_marginTop="12dp"/>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -188,7 +189,7 @@
         android:text="Continue"
         android:textColor="@color/black"
         android:fontFamily="@font/montserrat_semibold"
-        android:textSize="18sp"/>
+        android:textSize="16sp"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineHorizontal"

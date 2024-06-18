@@ -42,7 +42,7 @@
             android:id="@+id/lostweight_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/lostweight"
+            android:src="@drawable/lost_weight"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
@@ -60,8 +60,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Lost Weight"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
+                android:textColor="@color/black"
                 android:fontFamily="@font/montserrat_medium"/>
 
             <TextView
@@ -109,7 +110,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Get Fitter"
-                android:textSize="18sp"
+                android:textSize="16sp"
+                android:textColor="@color/black"
                 android:textStyle="bold"
                 android:fontFamily="@font/montserrat_medium"/>
 
@@ -135,14 +137,14 @@
         app:layout_anchorGravity="center"/>
 
     <Button
-        android:id="@+id/signin_button"
+        android:id="@+id/previous_button"
         android:layout_width="0dp"
         android:layout_height="55dp"
         android:layout_marginTop="50dp"
         app:backgroundTint="@color/black"
         android:background="@drawable/border_signup"
         android:gravity="center"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:text="Previous"
         android:textColor="@color/black"
         android:fontFamily="@font/montserrat_semibold"
@@ -151,12 +153,12 @@
         app:layout_constraintStart_toStartOf="@id/guidelineVertical"/>
 
     <Button
-        android:id="@+id/login_button"
+        android:id="@+id/save_button"
         android:layout_width="0dp"
         android:layout_height="55dp"
         android:background="@drawable/border_login"
         android:layout_marginTop="50dp"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:text="Save"
         app:backgroundTint="@color/primary"
         android:textColor="@color/black"
