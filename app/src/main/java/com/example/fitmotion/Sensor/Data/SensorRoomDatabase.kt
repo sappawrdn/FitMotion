@@ -1,4 +1,4 @@
-package com.example.fitmotion.Sensor
+package com.example.fitmotion.Sensor.Data
 
 import android.content.Context
 import androidx.room.Database

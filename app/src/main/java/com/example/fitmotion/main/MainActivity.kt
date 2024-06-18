@@ -1,34 +1,15 @@
 package com.example.fitmotion.main
 
-import android.content.Context
-import android.content.Intent
-import android.hardware.Sensor
-import android.hardware.SensorEvent
-import android.hardware.SensorEventListener
-import android.hardware.SensorManager
 import android.os.Build
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.util.Log
 import android.view.WindowInsets
 import android.view.WindowManager
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import com.example.fitmotion.Factory.ViewModelFactory
 import com.example.fitmotion.R
-import com.example.fitmotion.Sensor.SensorData
-import com.example.fitmotion.Sensor.SensorRoomDatabase
-import com.example.fitmotion.Welcome.WelcomeActivity
 import com.example.fitmotion.databinding.ActivityMainBinding
 import com.qamar.curvedbottomnaviagtion.CurvedBottomNavigation
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import java.math.BigDecimal
 
 class MainActivity : AppCompatActivity() {
 

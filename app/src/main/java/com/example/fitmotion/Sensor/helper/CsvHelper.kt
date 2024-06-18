@@ -1,6 +1,6 @@
 package com.example.fitmotion.Sensor.helper
 
-import com.example.fitmotion.Sensor.SensorData
+import com.example.fitmotion.Sensor.Data.SensorData
 
 object CsvHelper {
 
