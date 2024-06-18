@@ -56,7 +56,7 @@ class SigninActivity: AppCompatActivity() {
 
     private fun setupAction(){
         binding.buttonSignin.setOnClickListener {
-            val username = binding.emailEditText.text.toString()
+            val username = binding.usernameEditText.text.toString()
             val password = binding.passwordEditText.text.toString()
             signinViewModel.signin(username, password)
         }
