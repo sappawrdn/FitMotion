@@ -14,9 +14,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FitMotion"
         tools:targetApi="31">
+
         <activity
             android:name=".Welcome.WelcomeActivity"
-            android:exported="false" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <activity
             android:name=".Signup.SignupActivity"
             android:exported="false" />
@@ -39,13 +47,9 @@
 
         <activity
             android:name=".main.MainActivity"
-            android:exported="true"
+            android:exported="false"
             android:theme="@style/App.Starting.Theme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
     </application>
