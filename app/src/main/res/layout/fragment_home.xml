@@ -16,7 +16,7 @@
             android:id="@+id/profile_circle"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            tools:src="@tools:sample/avatars"
+            android:src="@drawable/ic_account"
             app:layout_constraintTop_toBottomOf="@id/guidelineHorizontal"
             app:layout_constraintStart_toStartOf="@id/guidelineVertical"/>
 
@@ -37,6 +37,7 @@
                 android:fontFamily="@font/montserrat_bold"/>
 
             <TextView
+                android:id="@+id/home_username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Shintaarjanti"

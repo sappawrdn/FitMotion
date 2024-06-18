@@ -16,6 +16,11 @@
     <string name="friends_nav">Friends</string>
     <string name="profile_nav">Profile</string>
 
+    <string name="logout_message">Are you sure want to logout?</string>
+    <string name="yes_message">Yes</string>
+    <string name="no_message">No</string>
+
+
     <string-array name="gender">
         <item>Male</item>
         <item>Female</item>
