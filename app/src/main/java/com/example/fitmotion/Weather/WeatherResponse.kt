@@ -119,8 +119,8 @@ data class Wind(
 	val deg: Int? = null,
 
 	@field:SerializedName("speed")
-	val speed: Any? = null,
+	val speed: Float? = null,
 
 	@field:SerializedName("gust")
-	val gust: Int? = null
+	val gust: Float? = null
 )

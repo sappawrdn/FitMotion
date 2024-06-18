@@ -1,8 +1,10 @@
 package com.example.fitmotion.Sensor
 
 import androidx.room.ColumnInfo
+import androidx.room.Entity
 import androidx.room.PrimaryKey
 
+@Entity
 data class SensorData(
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0,

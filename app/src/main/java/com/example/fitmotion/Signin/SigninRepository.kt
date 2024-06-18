@@ -6,8 +6,7 @@ class SigninRepository private constructor(
     private val signinApiService: SigninApiService
 ) {
     suspend fun signinRepo(username: String, password: String): SigninResponse{
-        val signinRequest = SigninRequest(username, password)
-        return signinApiService.signin(signinRequest)
+        return signinApiService.signin(username, password)
     }
 
     companion object {

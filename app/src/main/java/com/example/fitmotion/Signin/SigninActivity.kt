@@ -74,6 +74,7 @@ class SigninActivity: AppCompatActivity() {
         signinViewModel.errorMessage.observe(this, Observer { error ->
             error?.let {
                 Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
+                Log.e("Sign In Response", error)
             }
         })
 
