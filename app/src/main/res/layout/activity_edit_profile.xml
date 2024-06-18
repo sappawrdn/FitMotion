@@ -12,8 +12,7 @@
         android:src="@drawable/ic_back"
         android:background="?attr/selectableItemBackgroundBorderless"
         app:layout_constraintStart_toStartOf="@id/guidelineVertical"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="30dp"/>
+        app:layout_constraintTop_toBottomOf="@id/guidelineHorizontal"/>
 
     <TextView
         android:id="@+id/title_edit_profile"
@@ -21,11 +20,10 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guidelineHorizontal"
         android:text="Edit Profile"
         android:fontFamily="@font/montserrat_bold"
         android:textColor="@color/black"
-        android:layout_marginTop="30dp"
         android:textSize="18sp"/>
 
     <TextView
@@ -37,13 +35,13 @@
         android:fontFamily="@font/montserrat_medium"
         app:layout_constraintTop_toBottomOf="@id/title_edit_profile"
         app:layout_constraintStart_toStartOf="@id/guidelineVertical3"
-        android:layout_marginTop="45dp"/>
+        android:layout_marginTop="40dp"/>
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/iv_edit"
         android:layout_width="95dp"
         android:layout_height="95dp"
-        tools:src="@tools:sample/avatars"
+        android:src="@drawable/ic_account"
         app:layout_constraintTop_toTopOf="@id/title_profile_photo"
         app:layout_constraintEnd_toEndOf="@id/guidelineVertical4">
     </de.hdodenhof.circleimageview.CircleImageView>
@@ -152,13 +150,86 @@
             android:paddingStart="30dp"/>
     </com.google.android.material.textfield.TextInputLayout>
 
+    <TextView
+        android:id="@+id/edit_weight_title"
+        android:layout_width="wrap_content"
+        android:textColor="@color/black"
+        android:layout_height="wrap_content"
+        android:text="Weight (Kg)"
+        android:fontFamily="@font/montserrat_regular"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@+id/emailEditTextLayout"
+        app:layout_constraintStart_toStartOf="@id/guidelineVertical3"
+        android:layout_marginTop="25dp"/>
+
+    <TextView
+        android:id="@+id/edit_height_title"
+        android:layout_width="wrap_content"
+        android:textColor="@color/black"
+        android:layout_height="wrap_content"
+        android:text="Height (Cm)"
+        android:fontFamily="@font/montserrat_regular"
+        android:textSize="16sp"
+        android:layout_marginStart="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/emailEditTextLayout"
+        app:layout_constraintStart_toEndOf="@id/guidelineVerticalCenter"
+        android:layout_marginTop="25dp"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/weightEditTextLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/guidelineVertical3"
+        app:layout_constraintTop_toBottomOf="@id/edit_weight_title"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toStartOf="@id/guidelineVerticalCenter"
+        app:boxCornerRadiusBottomEnd="15dp"
+        app:boxCornerRadiusBottomStart="15dp"
+        app:boxCornerRadiusTopEnd="15dp"
+        app:boxCornerRadiusTopStart="15dp"
+        android:layout_marginEnd="10dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/weightEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:fontFamily="@font/montserrat_regular"
+            android:inputType="number" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/heightEditTextLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/guidelineVertical2"
+        app:layout_constraintTop_toBottomOf="@id/edit_height_title"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toEndOf="@id/guidelineVerticalCenter"
+        app:boxCornerRadiusBottomEnd="15dp"
+        app:boxCornerRadiusBottomStart="15dp"
+        app:boxCornerRadiusTopEnd="15dp"
+        app:boxCornerRadiusTopStart="15dp"
+        android:layout_marginStart="10dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/heightEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:fontFamily="@font/montserrat_regular"
+            android:inputType="number" />
+    </com.google.android.material.textfield.TextInputLayout>
+
     <Button
         android:id="@+id/button_save"
         android:layout_width="0dp"
         android:layout_height="50dp"
         app:layout_constraintStart_toStartOf="@id/guidelineVertical3"
         app:layout_constraintEnd_toEndOf="@+id/guidelineVertical4"
-        app:layout_constraintTop_toBottomOf="@+id/emailEditTextLayout"
+        app:layout_constraintTop_toBottomOf="@+id/weightEditTextLayout"
         android:layout_marginTop="50dp"
         android:background="@drawable/border_login"
         app:backgroundTint="@color/primary"
@@ -169,7 +240,7 @@
 
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_horizontal"
+        android:id="@+id/guidelineVerticalCenter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -212,12 +283,21 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintGuide_percent="0.05"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineHorizontal2"
         android:layout_width="wrap_content"
         android:layout_height="64dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintGuide_begin="45dp"
+        app:layout_constraintGuide_percent="0.95"
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
