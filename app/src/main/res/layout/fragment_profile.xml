@@ -14,8 +14,8 @@
 
         <ImageButton
             android:id="@+id/button_logout"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             app:layout_constraintTop_toBottomOf="@id/guidelineHorizontal"
             app:layout_constraintEnd_toEndOf="@id/guidelineVertical2"
@@ -43,7 +43,7 @@
             android:fontFamily="@font/montserrat_semibold"
             android:textColor="@color/black"
             android:textSize="20sp"
-            android:layout_marginTop="25dp"/>
+            android:layout_marginTop="15dp"/>
 
         <LinearLayout
             android:id="@+id/button_edit"
