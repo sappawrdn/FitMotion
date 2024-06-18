@@ -4,26 +4,29 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal"
-    android:layout_marginStart="24dp"
-    android:layout_marginTop="24dp"
-    android:layout_marginEnd="24dp"
+    android:layout_marginStart="20dp"
+    android:layout_marginTop="20dp"
+    android:layout_marginEnd="20dp"
     android:elevation="4dp"
-    app:cardCornerRadius="16dp"
-    app:cardBackgroundColor="#FFFFFF">
+    app:cardCornerRadius="10dp"
+    app:cardBackgroundColor="@color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
+        android:background="@drawable/shadow_alert"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:padding="10dp">
+        android:padding="15dp">
 
         <!-- Icon info -->
         <ImageView
             android:id="@+id/info_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_info"/>
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_info"
+            android:layout_gravity="top"
+            android:layout_marginBottom="14dp" />
 
         <!-- Text container -->
         <LinearLayout
@@ -39,8 +42,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/title_alert"
-                android:textSize="16sp"
-                android:textColor="#000000"/>
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/montserrat_semibold"/>
 
             <TextView
                 android:id="@+id/alert_content"
@@ -48,8 +52,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="@string/alert_content"
-                android:textSize="12sp"
-                android:textColor="#666666"/>
+                android:textSize="11sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/montserrat_regular"/>
         </LinearLayout>
     </LinearLayout>
 

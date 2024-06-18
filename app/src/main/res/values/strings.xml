@@ -10,6 +10,14 @@
     <string name="achievement_display">Achievement</string>
     <string name="edit">Edit</string>
 
+    <string name="screening_title">Your current condition"</string>
+    <string name="screening_desc">we need your current information to \ndetermine the training method</string>
+    <string name="weight_title">Weight (Kg)</string>
+    <string name="height_title">Height (Cm)</string>
+    <string name="gender_title">Gender</string>
+    <string name="dob_title">Date of Birth</string>
+    <string name="title_commitment">What\'s your daily activity commitment?</string>
+
     <string name="home_nav">Home</string>
     <string name="achieve_nav">Milestone</string>
     <string name="sensor_nav">Sensor</string>
@@ -21,13 +29,24 @@
     <string name="no_message">No</string>
 
     <string name="title_alert">Sensor Positioning Information</string>
-    <string name="alert_content">To ensure accurate sensor readings, place your device near your body, preferably in the front pocket of your pants.</string>
+    <string name="alert_content">To ensure accurate sensor readings, place your device near your body. preferably in the front pocket of your pants.</string>
 
 
     <string-array name="gender">
         <item>Male</item>
         <item>Female</item>
     </string-array>
+
+    <string-array name="commitment">
+        <item>5 min / day</item>
+        <item>10 min / day</item>
+        <item>15 min / day</item>
+        <item>30 min / day</item>
+        <item>45 min / day</item>
+        <item>60 min / day</item>
+        <item>90 min / day</item>
+    </string-array>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
