@@ -36,6 +36,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         ViewModelFactory.getInstance(this)
     }
 
+    // sappwrdn
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
 
