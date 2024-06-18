@@ -7,9 +7,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import androidx.activity.viewModels
+import androidx.fragment.app.viewModels
+import com.example.fitmotion.Factory.ViewModelFactory
+import com.example.fitmotion.Welcome.WelcomeActivity
 import com.example.fitmotion.databinding.FragmentProfileBinding
+import com.example.fitmotion.main.MainViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class ProfileFragment : Fragment() {
+    private val viewModel by viewModels<MainViewModel> {
+        ViewModelFactory.getInstance(requireContext())
+    }
 
     private lateinit var binding: FragmentProfileBinding
 
@@ -27,6 +38,18 @@ class ProfileFragment : Fragment() {
 
         // Find the edit button from the layout
         val editButton = binding.buttonEdit
+        val logoutButton = binding.buttonLogout
+
+        logoutButton.setOnClickListener{
+            CoroutineScope(Dispatchers.Main).launch {
+                viewModel.logout()
+
+                // Mulai WelcomeActivity setelah logout
+                val intent = Intent(activity, WelcomeActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
+            }
+        }
 
         // Set click listener for the edit button
         editButton.setOnClickListener {

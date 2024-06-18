@@ -26,11 +26,11 @@
             app:lottie_speed="1" />
 
         <Button
-            android:id="@+id/stop_button"
+            android:id="@+id/toggle_button"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_gravity="center_horizontal|bottom"
-            android:background="@drawable/ic_stop"
+            android:background="@drawable/ic_play"
             app:backgroundTint = "@color/primary"
             app:layout_constraintTop_toBottomOf="@id/guidelineHorizontal"
             app:layout_constraintStart_toStartOf="parent"
