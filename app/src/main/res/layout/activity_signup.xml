@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white">
-    
+
     <ImageView
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -12,47 +13,47 @@
         app:layout_constraintTop_toBottomOf="@+id/guidelineHorizontal"
         app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontal2"
         app:layout_constraintStart_toStartOf="@+id/guidelineVertical"
-        app:layout_constraintEnd_toEndOf="@id/guidelineVertical2"/>
-    
+        app:layout_constraintEnd_toEndOf="@id/guidelineVertical2" />
+
     <TextView
         android:id="@+id/signup_title"
         android:layout_width="wrap_content"
-        android:textColor="@color/black"
         android:layout_height="wrap_content"
-        android:text="Sign Up"
         android:layout_marginTop="20dp"
-        android:fontFamily="@font/montserrat_extrabold"
+        android:text="Sign Up"
+        android:textColor="@color/black"
         android:textSize="25sp"
+        android:fontFamily="@font/montserrat_extrabold"
         app:layout_constraintStart_toStartOf="@+id/guidelineVertical"
-        app:layout_constraintTop_toBottomOf="@+id/guidelineHorizontal2"/>
+        app:layout_constraintTop_toBottomOf="@+id/guidelineHorizontal2" />
 
     <TextView
         android:id="@+id/username_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
+        android:layout_marginTop="12dp"
         android:text="Username"
+        android:textColor="@color/black"
         android:textSize="16sp"
         android:fontFamily="@font/montserrat_regular"
         app:layout_constraintStart_toStartOf="@id/guidelineVertical"
-        app:layout_constraintTop_toBottomOf="@+id/signup_title"
-        android:layout_marginTop="12dp"/>
+        app:layout_constraintTop_toBottomOf="@+id/signup_title" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/usernameEditTextLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
-        android:layout_marginTop="8dp"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="@id/guidelineVertical2"
-        app:layout_constraintStart_toStartOf="@id/guidelineVertical"
-        app:layout_constraintTop_toBottomOf="@+id/username_title"
-        app:startIconDrawable="@drawable/ic_baseline_person_24"
+        android:layout_marginTop="8dp"
         android:hint="username"
         app:boxCornerRadiusBottomEnd="15dp"
         app:boxCornerRadiusBottomStart="15dp"
         app:boxCornerRadiusTopEnd="15dp"
-        app:boxCornerRadiusTopStart="15dp">
+        app:boxCornerRadiusTopStart="15dp"
+        app:layout_constraintEnd_toEndOf="@id/guidelineVertical2"
+        app:layout_constraintStart_toStartOf="@id/guidelineVertical"
+        app:layout_constraintTop_toBottomOf="@+id/username_title"
+        app:startIconDrawable="@drawable/ic_baseline_person_24">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/usernameEditText"
@@ -61,36 +62,36 @@
             android:ems="10"
             android:fontFamily="@font/montserrat_regular"
             android:inputType="text"
-            android:paddingStart="48dp"/>
+            android:paddingStart="48dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/email_title"
         android:layout_width="wrap_content"
-        android:textColor="@color/black"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/usernameEditTextLayout"
+        android:layout_marginTop="12dp"
         android:text="Email"
-        app:layout_constraintStart_toStartOf="@id/guidelineVertical"
-        android:fontFamily="@font/montserrat_regular"
+        android:textColor="@color/black"
         android:textSize="16sp"
-        android:layout_marginTop="12dp"/>
+        android:fontFamily="@font/montserrat_regular"
+        app:layout_constraintStart_toStartOf="@id/guidelineVertical"
+        app:layout_constraintTop_toBottomOf="@+id/usernameEditTextLayout" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/emailEditTextLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
-        android:layout_marginTop="8dp"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="@id/guidelineVertical2"
-        app:layout_constraintStart_toStartOf="@id/guidelineVertical"
-        app:layout_constraintTop_toBottomOf="@+id/email_title"
-        app:startIconDrawable="@drawable/ic_baseline_email_24"
+        android:layout_marginTop="8dp"
         android:hint="email"
         app:boxCornerRadiusBottomEnd="15dp"
         app:boxCornerRadiusBottomStart="15dp"
         app:boxCornerRadiusTopEnd="15dp"
-        app:boxCornerRadiusTopStart="15dp">
+        app:boxCornerRadiusTopStart="15dp"
+        app:layout_constraintEnd_toEndOf="@id/guidelineVertical2"
+        app:layout_constraintStart_toStartOf="@id/guidelineVertical"
+        app:layout_constraintTop_toBottomOf="@+id/email_title"
+        app:startIconDrawable="@drawable/ic_baseline_email_24">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/emailEditText"
@@ -99,37 +100,37 @@
             android:ems="10"
             android:fontFamily="@font/montserrat_regular"
             android:inputType="text"
-            android:paddingStart="48dp"/>
+            android:paddingStart="48dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/password_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        app:layout_constraintTop_toBottomOf="@+id/emailEditTextLayout"
+        android:layout_marginTop="12dp"
         android:text="Password"
-        app:layout_constraintStart_toStartOf="@id/guidelineVertical"
-        android:fontFamily="@font/montserrat_regular"
+        android:textColor="@color/black"
         android:textSize="16sp"
-        android:layout_marginTop="12dp"/>
+        android:fontFamily="@font/montserrat_regular"
+        app:layout_constraintStart_toStartOf="@id/guidelineVertical"
+        app:layout_constraintTop_toBottomOf="@+id/emailEditTextLayout" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/passwordEditTextLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
-        android:layout_marginTop="8dp"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="@id/guidelineVertical2"
-        app:layout_constraintStart_toStartOf="@id/guidelineVertical"
-        app:layout_constraintTop_toBottomOf="@+id/password_title"
-        app:startIconDrawable="@drawable/ic_baseline_lock_24"
-        app:endIconMode="password_toggle"
+        android:layout_marginTop="8dp"
         android:hint="password"
         app:boxCornerRadiusBottomEnd="15dp"
         app:boxCornerRadiusBottomStart="15dp"
         app:boxCornerRadiusTopEnd="15dp"
-        app:boxCornerRadiusTopStart="15dp">
+        app:boxCornerRadiusTopStart="15dp"
+        app:endIconMode="password_toggle"
+        app:layout_constraintEnd_toEndOf="@id/guidelineVertical2"
+        app:layout_constraintStart_toStartOf="@id/guidelineVertical"
+        app:layout_constraintTop_toBottomOf="@+id/password_title"
+        app:startIconDrawable="@drawable/ic_baseline_lock_24">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/passwordEditText"
@@ -138,37 +139,37 @@
             android:ems="10"
             android:fontFamily="@font/montserrat_regular"
             android:inputType="textPassword"
-            android:paddingStart="48dp"/>
+            android:paddingStart="48dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/confirmpassword_title"
         android:layout_width="wrap_content"
-        android:textColor="@color/black"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/passwordEditTextLayout"
+        android:layout_marginTop="12dp"
         android:text="Confirm Password"
-        app:layout_constraintStart_toStartOf="@id/guidelineVertical"
-        android:fontFamily="@font/montserrat_regular"
+        android:textColor="@color/black"
         android:textSize="16sp"
-        android:layout_marginTop="12dp"/>
+        android:fontFamily="@font/montserrat_regular"
+        app:layout_constraintStart_toStartOf="@id/guidelineVertical"
+        app:layout_constraintTop_toBottomOf="@+id/passwordEditTextLayout" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/confirmpasswordEditTextLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
-        android:layout_marginTop="8dp"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="@id/guidelineVertical2"
-        app:layout_constraintStart_toStartOf="@id/guidelineVertical"
-        app:layout_constraintTop_toBottomOf="@+id/confirmpassword_title"
-        app:startIconDrawable="@drawable/ic_baseline_lock_24"
-        app:endIconMode="password_toggle"
+        android:layout_marginTop="8dp"
         android:hint="confirm password"
         app:boxCornerRadiusBottomEnd="15dp"
         app:boxCornerRadiusBottomStart="15dp"
         app:boxCornerRadiusTopEnd="15dp"
-        app:boxCornerRadiusTopStart="15dp">
+        app:boxCornerRadiusTopStart="15dp"
+        app:endIconMode="password_toggle"
+        app:layout_constraintEnd_toEndOf="@id/guidelineVertical2"
+        app:layout_constraintStart_toStartOf="@id/guidelineVertical"
+        app:layout_constraintTop_toBottomOf="@+id/confirmpassword_title"
+        app:startIconDrawable="@drawable/ic_baseline_lock_24">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/confirmpasswordEditText"
@@ -177,19 +178,19 @@
             android:ems="10"
             android:fontFamily="@font/montserrat_regular"
             android:inputType="textPassword"
-            android:paddingStart="48dp"/>
+            android:paddingStart="48dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <ProgressBar
         android:id="@+id/progbar_signup"
         style="@style/CustomProgressBar"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:visibility="invisible"
-        app:layout_anchorGravity="center"/>
-    
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_anchorGravity="center" />
+
     <Button
         android:id="@+id/signup_button"
         android:layout_width="0dp"
@@ -197,58 +198,47 @@
         app:layout_constraintStart_toStartOf="@id/guidelineVertical"
         app:layout_constraintEnd_toEndOf="@+id/guidelineVertical2"
         app:layout_constraintTop_toBottomOf="@id/confirmpasswordEditTextLayout"
-        android:layout_marginTop="40dp"
+        app:layout_constraintBottom_toTopOf="@id/guidelineHorizontal3"
         android:background="@drawable/border_login"
         app:backgroundTint="@color/primary"
         android:text="Sign Up"
         android:textColor="@color/black"
         android:fontFamily="@font/montserrat_semibold"
-        android:textSize="18sp"/>
-
+        android:textSize="16sp"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineVertical"
         android:layout_width="wrap_content"
-        android:layout_height="64dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintGuide_percent="0.05"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintGuide_percent="0.05" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineVertical2"
         android:layout_width="wrap_content"
-        android:layout_height="64dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintGuide_percent="0.95"
-        app:layout_constraintStart_toStartOf="parent" />
-
+        app:layout_constraintGuide_percent="0.95" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineHorizontal"
         android:layout_width="wrap_content"
-        android:layout_height="64dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintGuide_percent="0.05"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintGuide_percent="0.08" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineHorizontal2"
         android:layout_width="wrap_content"
-        android:layout_height="64dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintGuide_begin="250dp"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintGuide_begin="250dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineHorizontal3"
         android:layout_width="wrap_content"
-        android:layout_height="64dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintGuide_percent="0.95"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintGuide_percent="0.92" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

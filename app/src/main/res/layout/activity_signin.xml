@@ -28,35 +28,35 @@
         app:layout_constraintTop_toBottomOf="@+id/guidelineHorizontal2"/>
 
     <TextView
-        android:id="@+id/email_title"
+        android:id="@+id/username_title"
         android:layout_width="wrap_content"
         android:textColor="@color/black"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/signin_title"
-        android:text="Email"
+        android:text="Username"
         app:layout_constraintStart_toStartOf="@id/guidelineVertical"
         android:fontFamily="@font/montserrat_regular"
         android:textSize="16sp"
         android:layout_marginTop="12dp"/>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/emailEditTextLayout"
+        android:id="@+id/usernameEditTextLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_marginTop="8dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="@id/guidelineVertical2"
         app:layout_constraintStart_toStartOf="@id/guidelineVertical"
-        app:layout_constraintTop_toBottomOf="@+id/email_title"
+        app:layout_constraintTop_toBottomOf="@+id/username_title"
         app:startIconDrawable="@drawable/ic_baseline_email_24"
-        android:hint="email"
+        android:hint="username"
         app:boxCornerRadiusBottomEnd="15dp"
         app:boxCornerRadiusBottomStart="15dp"
         app:boxCornerRadiusTopEnd="15dp"
         app:boxCornerRadiusTopStart="15dp">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/emailEditText"
+            android:id="@+id/usernameEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -70,7 +70,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
-        app:layout_constraintTop_toBottomOf="@+id/emailEditTextLayout"
+        app:layout_constraintTop_toBottomOf="@+id/usernameEditTextLayout"
         android:text="Password"
         app:layout_constraintStart_toStartOf="@id/guidelineVertical"
         android:fontFamily="@font/montserrat_regular"
@@ -127,7 +127,7 @@
         android:text="Sign In"
         android:textColor="@color/black"
         android:fontFamily="@font/montserrat_semibold"
-        android:textSize="18sp"/>
+        android:textSize="16sp"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineVertical"
