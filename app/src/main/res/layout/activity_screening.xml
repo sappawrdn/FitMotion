@@ -9,7 +9,7 @@
         android:id="@+id/screening_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Your current condition"
+        android:text="@string/screening_title"
         android:fontFamily="@font/montserrat_extrabold"
         android:textColor="@color/black"
         android:textSize="25sp"
@@ -20,7 +20,7 @@
         android:id="@+id/screening_desc"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="we need your current information to \ndetermine the training method"
+        android:text="@string/screening_desc"
         app:layout_constraintStart_toStartOf="@id/guidelineVertical"
         app:layout_constraintTop_toBottomOf="@id/screening_title"
         app:layout_constraintEnd_toEndOf="@id/guidelineVertical2"
@@ -33,7 +33,7 @@
         android:layout_width="wrap_content"
         android:textColor="@color/black"
         android:layout_height="wrap_content"
-        android:text="Weight (Kg)"
+        android:text="@string/weight_title"
         android:fontFamily="@font/montserrat_regular"
         android:textSize="16sp"
         app:layout_constraintTop_toBottomOf="@+id/screening_desc"
@@ -45,7 +45,7 @@
         android:layout_width="wrap_content"
         android:textColor="@color/black"
         android:layout_height="wrap_content"
-        android:text="Height (Cm)"
+        android:text="@string/height_title"
         android:fontFamily="@font/montserrat_regular"
         android:textSize="16sp"
         app:layout_constraintTop_toBottomOf="@+id/screening_desc"
@@ -106,11 +106,11 @@
         android:textColor="@color/black"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/weightEditTextLayout"
-        android:text="Date of Birth"
+        android:text="@string/dob_title"
         app:layout_constraintStart_toStartOf="@id/guidelineVertical"
         android:fontFamily="@font/montserrat_regular"
         android:textSize="16sp"
-        android:layout_marginTop="12dp"/>
+        android:layout_marginTop="15dp"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/dateEditTextLayout"
@@ -145,11 +145,11 @@
         android:textColor="@color/black"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/dateEditTextLayout"
-        android:text="Gender"
+        android:text="@string/gender_title"
         app:layout_constraintStart_toStartOf="@id/guidelineVertical"
         android:fontFamily="@font/montserrat_regular"
         android:textSize="16sp"
-        android:layout_marginTop="12dp"/>
+        android:layout_marginTop="15dp"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/genderEditTextLayout"
@@ -173,7 +173,42 @@
             android:inputType="none"
             android:fontFamily="@font/montserrat_regular"
             android:hint="Select an option"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
+    <TextView
+        android:id="@+id/commit_title"
+        android:layout_width="wrap_content"
+        android:textColor="@color/black"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/genderEditTextLayout"
+        android:text="@string/title_commitment"
+        app:layout_constraintStart_toStartOf="@id/guidelineVertical"
+        android:fontFamily="@font/montserrat_regular"
+        android:textSize="16sp"
+        android:layout_marginTop="15dp"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/commitEditTextLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/guidelineVertical2"
+        app:layout_constraintStart_toStartOf="@id/guidelineVertical"
+        app:layout_constraintTop_toBottomOf="@+id/commit_title"
+        app:boxCornerRadiusBottomEnd="15dp"
+        app:boxCornerRadiusBottomStart="15dp"
+        app:boxCornerRadiusTopEnd="15dp"
+        app:boxCornerRadiusTopStart="15dp">
+
+        <AutoCompleteTextView
+            android:id="@+id/commitAutoComplete"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:inputType="none"
+            android:fontFamily="@font/montserrat_regular"
+            android:hint="Select an option"/>
     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -182,7 +217,7 @@
         android:layout_height="55dp"
         app:layout_constraintStart_toStartOf="@id/guidelineVertical"
         app:layout_constraintEnd_toEndOf="@+id/guidelineVertical2"
-        app:layout_constraintTop_toBottomOf="@+id/genderEditTextLayout"
+        app:layout_constraintTop_toBottomOf="@+id/commitEditTextLayout"
         android:layout_marginTop="50dp"
         android:background="@drawable/border_login"
         app:backgroundTint="@color/primary"

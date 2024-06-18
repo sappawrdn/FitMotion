@@ -13,4 +13,7 @@ interface SensorDao {
 
     @Query("SELECT * FROM SensorData")
     fun getAllSensorData(): List<SensorData>
+
+    @Query("DELETE FROM SensorData")
+    suspend fun clearTable()
 }

@@ -22,6 +22,12 @@ class ScreeningActivity : AppCompatActivity() {
         binding.genderAutoComplete.setAdapter(arrayAdapter)
         setContentView(binding.root)
 
+        val commitment = resources.getStringArray(R.array.commitment)
+        val commitmentArrayAdapter = ArrayAdapter(this, R.layout.dropdown_menu, commitment)
+        binding.commitAutoComplete.setAdapter(commitmentArrayAdapter)
+        setContentView(binding.root)
+
+
         val date = DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
             calendar.set(Calendar.YEAR, year)
             calendar.set(Calendar.MONTH, month)

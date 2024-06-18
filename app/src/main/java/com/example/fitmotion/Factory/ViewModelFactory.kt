@@ -4,6 +4,8 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.fitmotion.DI.Injection
+import com.example.fitmotion.Sensor.Repo.SensorRepository
+import com.example.fitmotion.Sensor.SensorViewModel
 import com.example.fitmotion.Signin.SigninRepository
 import com.example.fitmotion.Signin.SigninViewModel
 import com.example.fitmotion.Signup.SignupRepository
@@ -14,7 +16,8 @@ import com.example.fitmotion.main.MainViewModel
 class ViewModelFactory private constructor(
     private val userRepository: UserRepository,
     private val signupRepository: SignupRepository,
-    private val signinRepository: SigninRepository
+    private val signinRepository: SigninRepository,
+    private val sensorRepository: SensorRepository
 ): ViewModelProvider.NewInstanceFactory()
 {
     @Suppress("UNCHECKED_CAST")
@@ -29,6 +32,9 @@ class ViewModelFactory private constructor(
             modelClass.isAssignableFrom(SigninViewModel::class.java) -> {
                 SigninViewModel(userRepository, signinRepository) as T
             }
+            modelClass.isAssignableFrom(SensorViewModel::class.java) -> {
+                SensorViewModel(sensorRepository) as T
+            }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }
     }
@@ -42,7 +48,8 @@ class ViewModelFactory private constructor(
                 INSTANCE ?: ViewModelFactory(
                     Injection.provideUserRepository(context),
                     Injection.provideSignupRepository(),
-                    Injection.provideSigninRepository()
+                    Injection.provideSigninRepository(),
+                    Injection.provideSensorRepository(context)
                 ).also { INSTANCE = it }
             }
         }
