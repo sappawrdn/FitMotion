@@ -32,10 +32,6 @@ import java.math.BigDecimal
 
 class MainActivity : AppCompatActivity() {
 
-    private val viewModel by viewModels<MainViewModel> {
-        ViewModelFactory.getInstance(this)
-    }
-
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
 

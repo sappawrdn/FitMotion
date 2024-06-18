@@ -35,6 +35,8 @@ class SensorFragment : Fragment(), SensorEventListener {
     private val handler = Handler(Looper.getMainLooper())
     private val saveInterval = 20L
 
+    private val uploadInterval = 5 * 60 * 1000L
+
     private val checkHandler = Handler(Looper.getMainLooper())
     private val checkInterval = 1000L // 1 detik
 
