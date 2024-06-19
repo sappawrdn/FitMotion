@@ -18,6 +18,7 @@ import androidx.core.content.ContentProviderCompat
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.lifecycle.lifecycleScope
 import androidx.work.Constraints
+import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.NetworkType
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.PeriodicWorkRequestBuilder
@@ -88,6 +89,7 @@ class SensorFragment : Fragment(), SensorEventListener{
                 toggleButton.setBackgroundResource(R.drawable.ic_play)
                 handler.removeCallbacksAndMessages(null)
                 checkHandler.removeCallbacksAndMessages(null)
+                WorkManager.getInstance(requireContext()).cancelUniqueWork("CsvExportWorker")
             } else {
                 toggleButton.setBackgroundResource(R.drawable.ic_stop)
                 startSavingDataPeriodically()
@@ -107,7 +109,8 @@ class SensorFragment : Fragment(), SensorEventListener{
             .setConstraints(constraints)
             .build()
 
-        WorkManager.getInstance(context).enqueue(csvExportRequest)
+        WorkManager.getInstance(context).enqueueUniquePeriodicWork("CsvExportWorker",
+            ExistingPeriodicWorkPolicy.REPLACE,csvExportRequest)
     }
 
     private fun startSavingDataPeriodically() {
@@ -201,13 +204,4 @@ class SensorFragment : Fragment(), SensorEventListener{
     override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
         Log.d("sensor Accuracy", "Sensor Accuracy changed: $accuracy")
     }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        val alertDialog = SensorAlertDialogFragment()
-        alertDialog.isCancelable = true // Atur dialog agar dapat dibatalkan dengan tap di luar dialog
-        alertDialog.show(parentFragmentManager, "SensorAlertDialog")
-    }
-
 }
