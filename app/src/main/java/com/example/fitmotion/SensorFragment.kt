@@ -202,4 +202,12 @@ class SensorFragment : Fragment(), SensorEventListener{
         Log.d("sensor Accuracy", "Sensor Accuracy changed: $accuracy")
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val alertDialog = SensorAlertDialogFragment()
+        alertDialog.isCancelable = true // Atur dialog agar dapat dibatalkan dengan tap di luar dialog
+        alertDialog.show(parentFragmentManager, "SensorAlertDialog")
+    }
+
 }
