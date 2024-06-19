@@ -213,6 +213,7 @@
 
 
     <Button
+        android:id="@+id/button_continue"
         android:layout_width="0dp"
         android:layout_height="55dp"
         app:layout_constraintStart_toStartOf="@id/guidelineVertical"

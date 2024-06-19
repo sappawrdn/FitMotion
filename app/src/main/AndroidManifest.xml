@@ -25,6 +25,10 @@
             android:exported="false" />
 
         <activity
+            android:name=".Screening.SetGoalsActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".Signup.SignupActivity"
             android:exported="false" />
         <activity
@@ -32,7 +36,7 @@
             android:exported="false" />
 
         <activity
-            android:name=".ScreeningActivity"
+            android:name=".Screening.ScreeningActivity"
             android:exported="true">
         </activity>
 

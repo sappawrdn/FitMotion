@@ -1,9 +1,11 @@
-package com.example.fitmotion
+package com.example.fitmotion.Screening
 
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
+import com.example.fitmotion.R
 import com.example.fitmotion.databinding.ActivityScreeningBinding
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -42,6 +44,11 @@ class ScreeningActivity : AppCompatActivity() {
                 calendar.get(Calendar.MONTH),
                 calendar.get(Calendar.DAY_OF_MONTH)
             ).show()
+        }
+
+        binding.buttonContinue.setOnClickListener{
+            val intent = Intent(this@ScreeningActivity, SetGoalsActivity::class.java)
+            startActivity(intent)
         }
 
     }

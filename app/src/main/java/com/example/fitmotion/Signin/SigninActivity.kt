@@ -10,12 +10,17 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import com.example.fitmotion.Factory.ViewModelFactory
+import com.example.fitmotion.Screening.ScreeningActivity
+import com.example.fitmotion.Screening.SetGoalsActivity
 import com.example.fitmotion.UserHelper.UserPreference
 import com.example.fitmotion.UserHelper.UserRepository
 import com.example.fitmotion.UserHelper.dataStore
 import com.example.fitmotion.databinding.ActivitySigninBinding
 import com.example.fitmotion.main.MainActivity
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
 
 class SigninActivity: AppCompatActivity() {
 
@@ -66,8 +71,18 @@ class SigninActivity: AppCompatActivity() {
         signinViewModel.signinResponse.observe(this, Observer { response ->
             response?.let {
                 Log.d("Sign In Response", "login OK")
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
+                lifecycleScope.launch {
+                    val userModel = userRepository.getSession().first()
+                    Log.e("TAG SCREENING", userModel.isScreening.toString())
+                    if (userModel.isScreening) {
+                        val intent = Intent(this@SigninActivity, MainActivity::class.java)
+                        startActivity(intent)
+                    } else {
+                        val intent = Intent(this@SigninActivity, ScreeningActivity::class.java)
+                        startActivity(intent)
+                    }
+                    finish()
+                }
             }
         })
 
@@ -79,4 +94,5 @@ class SigninActivity: AppCompatActivity() {
         })
 
     }
+
 }

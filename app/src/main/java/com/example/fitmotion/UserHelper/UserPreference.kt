@@ -1,6 +1,7 @@
 package com.example.fitmotion.UserHelper
 
 import android.content.Context
+import android.util.Log
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
@@ -19,7 +20,9 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
             preferences[USERNAME_KEY] = user.username
             preferences[TOKEN_KEY] = user.token
             preferences[IS_LOGIN_KEY] = true
+            preferences[IS_SCREENING_DONE_KEY] = user.isScreening
         }
+        Log.d("UserPreference", "Session saved with isScreening = ${user.isScreening}")
     }
 
     fun getSession(): Flow<UserModel> {
@@ -27,9 +30,17 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
             UserModel(
                 preferences[USERNAME_KEY] ?: "",
                 preferences[TOKEN_KEY] ?: "",
-                preferences[IS_LOGIN_KEY] ?: false
+                preferences[IS_LOGIN_KEY] ?: false,
+                preferences[IS_SCREENING_DONE_KEY] ?: false
             )
         }
+    }
+
+    suspend fun updateScreeningStatus(isDone: Boolean){
+        dataStore.edit { preferences ->
+            preferences[IS_SCREENING_DONE_KEY] = isDone
+        }
+        Log.d("UserPreference", "Screening status updated to $isDone")
     }
 
     suspend fun logout() {
@@ -46,6 +57,7 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
         private val USERNAME_KEY = stringPreferencesKey("username")
         private val TOKEN_KEY = stringPreferencesKey("token")
         private val IS_LOGIN_KEY = booleanPreferencesKey("isLogin")
+        private val IS_SCREENING_DONE_KEY = booleanPreferencesKey("isScreening")
 
         fun getInstance(dataStore: DataStore<Preferences>): UserPreference {
             return INSTANCE ?: synchronized(this) {
