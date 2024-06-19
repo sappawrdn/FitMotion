@@ -1,17 +1,25 @@
 package com.example.fitmotion.main
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.WindowInsets
 import android.view.WindowManager
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import com.example.fitmotion.Factory.ViewModelFactory
 import com.example.fitmotion.R
+import com.example.fitmotion.Welcome.WelcomeActivity
 import com.example.fitmotion.databinding.ActivityMainBinding
 import com.qamar.curvedbottomnaviagtion.CurvedBottomNavigation
 
 class MainActivity : AppCompatActivity() {
+
+    private val viewModel by viewModels<MainViewModel>{
+        ViewModelFactory.getInstance(this)
+    }
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
@@ -30,6 +38,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        viewModel.getSession().observe(this){user ->
+            if (!user.isLogin){
+                startActivity(Intent(this, WelcomeActivity::class.java))
+                finish()
+            }
+
+        }
+
+
 
         initNavHost()
         binding.setUpBottomNavigation()
