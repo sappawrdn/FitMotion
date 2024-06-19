@@ -1,5 +1,6 @@
 package com.example.fitmotion
 
+
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -12,11 +13,17 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fitmotion.Factory.ViewModelFactory
+import com.example.fitmotion.Sensor.Worker.dataStore
+import com.example.fitmotion.UserHelper.UserPreference
 import com.example.fitmotion.Weather.WeatherApiService
 import com.example.fitmotion.Weather.WeatherResponse
 import com.example.fitmotion.databinding.FragmentHomeBinding
-import com.example.fitmotion.databinding.FragmentProfileBinding
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.observe
+import com.example.fitmotion.UserHelper.UserRepository
 import com.example.fitmotion.main.MainViewModel
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
@@ -25,7 +32,12 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+
 class HomeFragment : Fragment() {
+
+    private val userRepository: UserRepository by lazy {
+        UserRepository.getInstance(UserPreference.getInstance(requireContext().dataStore))
+    }
 
     private val viewModel by viewModels<MainViewModel> {
         ViewModelFactory.getInstance(requireContext())
@@ -46,7 +58,11 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
+        viewLifecycleOwner.lifecycleScope.launch {
+            userRepository.getSession().collect { userModel ->
+                binding.homeUsername.text = userModel.username
+            }
+        }
 
         fetchWeatherData("London")
 
