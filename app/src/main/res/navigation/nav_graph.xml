@@ -11,7 +11,7 @@
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/achievementFragment"
-        android:name="com.example.fitmotion.AchievementFragment"
+        android:name="com.example.fitmotion.Achievement.AchievementFragment"
         android:label="Milestone"
         tools:layout="@layout/fragment_achievement" />
     <fragment

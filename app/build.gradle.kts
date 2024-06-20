@@ -52,6 +52,7 @@ dependencies {
     implementation(libs.material.v150)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.material3.android)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -78,5 +79,7 @@ dependencies {
     implementation ("com.opencsv:opencsv:5.5.2")
     implementation ("androidx.room:room-ktx:2.5.2")
     implementation ("com.github.bumptech.glide:glide:4.12.0")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.12.0")
+    implementation ("com.caverock:androidsvg:1.4")
     implementation ("com.github.PhilJay:MPAndroidChart:v3.1.0")
 }

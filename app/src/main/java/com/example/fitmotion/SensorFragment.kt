@@ -78,7 +78,7 @@ class SensorFragment : Fragment(), SensorEventListener{
         checkSensorAvailability(Sensor.TYPE_LINEAR_ACCELERATION)
 
         val alertDialog = SensorAlertDialogFragment()
-        alertDialog.isCancelable = true // Atur dialog agar dapat dibatalkan dengan tap di luar dialog
+        alertDialog.isCancelable = true
         alertDialog.show(parentFragmentManager, "SensorAlertDialog")
 
         val toggleButton: Button? = view?.findViewById(R.id.toggle_button)

@@ -31,6 +31,18 @@
     <string name="title_alert">Sensor Positioning Information</string>
     <string name="alert_content">To ensure accurate sensor readings, place your device near your body. preferably in the front pocket of your pants.</string>
 
+    <string name="runner">Run 3 Km</string>
+    <string name="marathon">Run 20 Km</string>
+    <string name="achilles">Run 5 Km</string>
+    <string name="pedestrian">Walk 1 Km</string>
+    <string name="adventurer">Walk 5 Km</string>
+    <string name="journey_man">Walk 10 Km</string>
+    <string name="triple">Run 30 minutes for 3 days</string>
+    <string name="halfmoon">Run 30 minutes for 2 weeks</string>
+    <string name="fullmoon">Run 30 minutes for 1 month</string>
+    <string name="nailed_it">Run 30 minutes for 3 months</string>
+    <string name="go_beyond">Run 30 minutes for 6 months</string>
+    <string name="to_infinity">Run 30 minutes for 1 years</string>
 
     <string-array name="gender">
         <item>Male</item>
