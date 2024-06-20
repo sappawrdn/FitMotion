@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.fitmotion.Friend.AddFriendActivity
 import com.example.fitmotion.Friend.Friend
 import com.example.fitmotion.Friend.FriendApiConfig
+import com.example.fitmotion.Friend.FriendsResponse
 import com.example.fitmotion.Friend.ListFriendAdapter
 import com.example.fitmotion.UserHelper.UserPreference
 import com.example.fitmotion.UserHelper.dataStore
@@ -90,29 +91,41 @@ class FriendsFragment : Fragment() {
                     }
 
                     val service = FriendApiConfig.getFriendApiService(token)
-                    service.getFriendsList().enqueue(object : Callback<List<Friend>> {
-                        override fun onResponse(call: Call<List<Friend>>, response: Response<List<Friend>>) {
+                    service.getFriendsList().enqueue(object : Callback<FriendsResponse> {
+                        override fun onResponse(
+                            call: Call<FriendsResponse>,
+                            response: Response<FriendsResponse>
+                        ) {
                             if (response.isSuccessful) {
-                                response.body()?.let { friends ->
+                                val friendsResponse = response.body()
+                                friendsResponse?.let { friendsResponse ->
                                     friendsList.clear()
-                                    friendsList.addAll(friends)
+                                    friendsList.addAll(friendsResponse.friends)
                                     adapter.notifyDataSetChanged()
-                                    Log.d("FriendsFragment", "Successfully fetched friends list") // Log ketika berhasil mengambil daftar teman
+                                    Log.d("FriendsFragment", "Successfully fetched friends list")
+
                                 }
                             } else {
-                                Toast.makeText(activity, "Failed to fetch friends", Toast.LENGTH_SHORT).show()
-                                Log.e("FriendsFragment", "Failed to fetch friends: ${response.message()}") // Log error jika gagal mengambil daftar teman
+                                Toast.makeText(
+                                    activity,
+                                    "Failed to fetch friends: ${response.message()}",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                Log.e("FriendsFragment", "Failed to fetch friends: ${response.message()}")
                             }
                         }
 
-                        override fun onFailure(call: Call<List<Friend>>, t: Throwable) {
+
+                        override fun onFailure(call: Call<FriendsResponse>, t: Throwable) {
                             Toast.makeText(activity, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
+                            Log.e("FriendsFragment", "Error: ${t.message}", t)
                         }
                     })
                 }
             }
         }
     }
+
 
     companion object {
 

@@ -16,5 +16,5 @@ interface FriendApiService {
     fun getFriendRequests(): Call<List<FriendRequest>>
 
     @GET("/api/v1/users/friends")
-    fun getFriendsList(): Call<List<Friend>>
+    fun getFriendsList(): Call<FriendsResponse>
 }
