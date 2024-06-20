@@ -9,13 +9,18 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import com.example.fitmotion.Achievement.AchievementClickListener
+import com.example.fitmotion.Achievement.AchievementFragment
+import com.example.fitmotion.Achievement.AdapterAchievement
+import com.example.fitmotion.Achievement.DetailDialogFragment
+import com.example.fitmotion.Achievement.ModelAchievement
 import com.example.fitmotion.Factory.ViewModelFactory
 import com.example.fitmotion.R
 import com.example.fitmotion.Welcome.WelcomeActivity
 import com.example.fitmotion.databinding.ActivityMainBinding
 import com.qamar.curvedbottomnaviagtion.CurvedBottomNavigation
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), AchievementClickListener {
 
     private val viewModel by viewModels<MainViewModel>{
         ViewModelFactory.getInstance(this)
@@ -107,5 +112,14 @@ class MainActivity : AppCompatActivity() {
             )
         }
         supportActionBar?.hide()
+    }
+
+    override fun onAchievementClicked(achievement: ModelAchievement) {
+        showDetailDialog(achievement)
+    }
+
+    private fun showDetailDialog(achievement: ModelAchievement) {
+        val dialog = DetailDialogFragment.newInstance(achievement.title, getString(achievement.descriptionResId))
+        dialog.show(supportFragmentManager, "DetailDialogFragment")
     }
 }

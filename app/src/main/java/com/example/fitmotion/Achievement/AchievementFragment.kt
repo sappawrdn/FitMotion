@@ -1,6 +1,7 @@
 package com.example.fitmotion.Achievement
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +10,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fitmotion.R
 
-class AchievementFragment : Fragment() {
+class AchievementFragment : Fragment(), AchievementClickListener {
 
     private lateinit var achievementsRecyclerView: RecyclerView
     private lateinit var achievementAdapter: AdapterAchievement
@@ -42,14 +43,21 @@ class AchievementFragment : Fragment() {
         )
 
         // Initialize adapter with achievements list
-        achievementAdapter = AdapterAchievement(achievements) { achievement ->
-
-        }
-
+        achievementAdapter = AdapterAchievement(achievements, this)
         // Set adapter to RecyclerView
         achievementsRecyclerView.adapter = achievementAdapter
 
         return view
+    }
+
+    override fun onAchievementClicked(achievement: ModelAchievement) {
+        Log.d("AchievementFragment", "Achievement clicked: ${achievement.title}")
+
+        // Atau, tampilkan dialog detail achievement
+        val fragmentManager = requireActivity().supportFragmentManager
+        val description = getString(achievement.descriptionResId)
+        val dialogFragment = DetailDialogFragment.newInstance(achievement.title, description)
+        dialogFragment.show(fragmentManager, "DetailDialogFragment")
     }
 
 

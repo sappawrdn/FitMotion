@@ -2,7 +2,9 @@ package com.example.fitmotion
 
 import android.app.AlertDialog
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,17 +13,27 @@ import android.widget.Button
 import android.widget.LinearLayout
 import androidx.activity.viewModels
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.example.fitmotion.Factory.ViewModelFactory
+import com.example.fitmotion.Profile.ProfilePicProvider
+import com.example.fitmotion.Sensor.Worker.dataStore
+import com.example.fitmotion.UserHelper.UserPreference
+import com.example.fitmotion.UserHelper.UserRepository
 import com.example.fitmotion.Welcome.WelcomeActivity
 import com.example.fitmotion.databinding.FragmentProfileBinding
 import com.example.fitmotion.main.MainViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class ProfileFragment : Fragment() {
     private val viewModel by viewModels<MainViewModel> {
         ViewModelFactory.getInstance(requireContext())
+    }
+
+    private val userRepository: UserRepository by lazy {
+        UserRepository.getInstance(UserPreference.getInstance(requireContext().dataStore))
     }
 
     private lateinit var binding: FragmentProfileBinding
@@ -37,6 +49,15 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            userRepository.getSession().collect { userModel ->
+                binding.profileName.text = userModel.username
+            }
+        }
+
+
+        loadImageUri()
 
         // Find the edit button from the layout
         val editButton = binding.buttonEdit
@@ -90,6 +111,29 @@ class ProfileFragment : Fragment() {
 
         // Show the dialog
         dialog.show()
+    }
+
+    private fun loadImageUri() {
+        CoroutineScope(Dispatchers.IO).launch {
+            val profile = ProfilePicProvider.getDatabase(requireContext()).profilePicDao().getProfile(1)
+            withContext(Dispatchers.Main) {
+                if (profile != null) {
+                    val imageUri = Uri.parse(profile.imageUri)
+                    try {
+                        requireContext().contentResolver.takePersistableUriPermission(
+                            imageUri,
+                            Intent.FLAG_GRANT_READ_URI_PERMISSION
+                        )
+                        binding.profileImage.setImageURI(imageUri)
+                    } catch (e: SecurityException) {
+                        Log.e("ProfileFragment", "Error taking persistable URI permission: ${e.message}")
+                        binding.profileImage.setImageResource(R.drawable.ic_account) // Set default image resource
+                    }
+                } else {
+                    binding.profileImage.setImageResource(R.drawable.ic_account) // Set default image resource
+                }
+            }
+        }
     }
 
     companion object {

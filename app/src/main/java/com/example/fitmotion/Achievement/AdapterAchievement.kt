@@ -14,7 +14,7 @@ import com.example.fitmotion.R
 
 class AdapterAchievement(
     private val achievements: List<ModelAchievement>,
-    private val onItemClick: (ModelAchievement) -> Unit
+    private val achievementClickListener: AchievementClickListener
 ) : RecyclerView.Adapter<AdapterAchievement.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -26,13 +26,17 @@ class AdapterAchievement(
             itemView.setOnClickListener {
                 val position = adapterPosition
                 if (position != RecyclerView.NO_POSITION) {
-                    onItemClick(achievements[position])
-                    Log.d("AdapterAchievement", "Item clicked at position $position")
-                    showDetailDialog(achievements[position])
+                    val achievement = achievements[position]
+                    achievementClickListener.onAchievementClicked(achievement)
                 }
             }
 
             cardView.setOnClickListener {
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    val achievement = achievements[position]
+                    achievementClickListener.onAchievementClicked(achievement)
+                }
                 cardView.setCardBackgroundColor(ContextCompat.getColor(itemView.context, R.color.cream))
 
                 itemView.postDelayed({
@@ -57,24 +61,6 @@ class AdapterAchievement(
             achievementTitle.text = achievement.title
         }
 
-        private fun showDetailDialog(achievement: ModelAchievement) {
-            val context = itemView.context
-            val fragmentManager = (context as AppCompatActivity).supportFragmentManager
-            val description = context.getString(achievement.descriptionResId)
-            val dialogFragment = DetailDialogFragment.newInstance(achievement.title, description)
-            dialogFragment.show(fragmentManager, "DetailDialogFragment")
-
-            Log.d("AdapterAchievement", "Attempting to show detail dialog for achievement: ${achievement.title}")
-
-            try {
-                dialogFragment.show(fragmentManager, "DetailDialogFragment")
-
-                Log.d("AdapterAchievement", "Detail dialog shown successfully for achievement: ${achievement.title}")
-            } catch (e: Exception) {
-                Log.e("AdapterAchievement", "Failed to show detail dialog for achievement: ${achievement.title}", e)
-            }
-        }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -90,4 +76,5 @@ class AdapterAchievement(
     override fun getItemCount(): Int {
         return achievements.size
     }
+
 }
