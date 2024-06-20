@@ -77,4 +77,5 @@ dependencies {
     implementation ("androidx.work:work-runtime-ktx:2.9.0")
     implementation ("com.opencsv:opencsv:5.5.2")
     implementation ("androidx.room:room-ktx:2.5.2")
+    implementation ("com.github.bumptech.glide:glide:4.12.0")
 }

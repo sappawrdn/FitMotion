@@ -43,6 +43,7 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
         Log.d("UserPreference", "Screening status updated to $isDone")
     }
 
+
     suspend fun logout() {
         dataStore.edit { preferences ->
             preferences.clear()

@@ -1,8 +1,9 @@
-package com.example.fitmotion
+package com.example.fitmotion.Friend
 
 import android.os.Bundle
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
+import com.example.fitmotion.R
 
 class AddFriendActivity : AppCompatActivity() {
 

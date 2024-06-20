@@ -8,13 +8,13 @@
     android:layout_marginTop="20dp"
     android:layout_marginEnd="20dp"
     android:elevation="4dp"
-    app:cardCornerRadius="10dp"
-    app:cardBackgroundColor="@color/white">
+    app:cardCornerRadius="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:background="@drawable/shadow_alert"
+        app:backgroundTint="@null"
         android:orientation="horizontal"
         android:gravity="center_vertical"
         android:padding="15dp">

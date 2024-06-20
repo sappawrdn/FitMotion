@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.Toast
@@ -63,6 +64,8 @@ class SigninActivity: AppCompatActivity() {
         binding.buttonSignin.setOnClickListener {
             val username = binding.usernameEditText.text.toString()
             val password = binding.passwordEditText.text.toString()
+
+            binding.progbarSignin.visibility = View.VISIBLE
             signinViewModel.signin(username, password)
         }
     }
@@ -82,6 +85,7 @@ class SigninActivity: AppCompatActivity() {
                         startActivity(intent)
                     }
                     finish()
+                    binding.progbarSignin.visibility = View.INVISIBLE
                 }
             }
         })
@@ -91,6 +95,7 @@ class SigninActivity: AppCompatActivity() {
                 Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
                 Log.e("Sign In Response", error)
             }
+            binding.progbarSignin.visibility = View.INVISIBLE
         })
 
     }
