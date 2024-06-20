@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -21,6 +22,9 @@ import com.example.fitmotion.databinding.FragmentHomeBinding
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.observe
 import com.example.fitmotion.UserHelper.UserRepository
+import com.example.fitmotion.core.CoreApiConfig
+import com.example.fitmotion.core.CoreApiResponse
+import com.example.fitmotion.daily.DailyResponse
 import com.example.fitmotion.main.MainViewModel
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
@@ -43,7 +47,6 @@ class HomeFragment : Fragment() {
         ViewModelFactory.getInstance(requireContext())
     }
 
-
     private lateinit var binding: FragmentHomeBinding
 
     override fun onCreateView(
@@ -53,7 +56,6 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -65,7 +67,8 @@ class HomeFragment : Fragment() {
             }
         }
 
-        fetchWeatherData("London")
+        fetchWeatherData("Medan")
+        fetchHealthCheckData()
 
         val activities = listOf(
             ActivitiesItem(R.drawable.sit, "sit", "60 min"),
@@ -87,6 +90,40 @@ class HomeFragment : Fragment() {
         }
     }
 
+    private fun fetchHealthCheckData() {
+        lifecycleScope.launch {
+            val userPreference = UserPreference.getInstance(requireContext().dataStore)
+            try {
+                val userModel = userPreference.getSession().first()
+                val token = userModel.token
+
+                val service = CoreApiConfig().getCoreApiService(token)
+                val call = service.getHealthCheck()
+                call.enqueue(object : Callback<CoreApiResponse> {
+                    override fun onResponse(call: Call<CoreApiResponse>, response: Response<CoreApiResponse>) {
+                        if (response.isSuccessful) {
+                            val healthCheckResponse = response.body()
+                            healthCheckResponse?.let {
+                                // Lakukan sesuatu dengan data health check yang diterima
+                                Log.d("HealthCheck", "Status: ${it.status}")
+                            }
+                        } else {
+                            Log.e("HealthCheck", "Response not successful")
+                        }
+                    }
+
+                    override fun onFailure(call: Call<CoreApiResponse>, t: Throwable) {
+                        if (isAdded) {
+                            Toast.makeText(requireContext(), "API call failed: ${t.message}", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                })
+            } catch (e: Exception) {
+                Toast.makeText(requireContext(), "Error fetching session: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
     private fun createRetrofitService(): WeatherApiService {
         val logging = HttpLoggingInterceptor().apply {
             setLevel(HttpLoggingInterceptor.Level.BODY)
@@ -104,11 +141,10 @@ class HomeFragment : Fragment() {
         return retrofit.create(WeatherApiService::class.java)
     }
 
-
-    private fun fetchWeatherData(cityName : String){
+    private fun fetchWeatherData(cityName: String) {
         val service = createRetrofitService()
-        val response = service.getWeatherData("London", "f1869f276bc88084c34603026e4df4da", "metric")
-        response.enqueue(object : Callback<WeatherResponse>{
+        val response = service.getWeatherData(cityName, "f1869f276bc88084c34603026e4df4da", "metric")
+        response.enqueue(object : Callback<WeatherResponse> {
             override fun onResponse(call: Call<WeatherResponse>, response: Response<WeatherResponse>) {
                 if (response.isSuccessful) {
                     val responseBody = response.body()
@@ -118,22 +154,20 @@ class HomeFragment : Fragment() {
 
                         Log.d("WeatherData", "$temperature and $condition")
 
-                        view?.findViewById<TextView>(R.id.title_weather)?.text = "$temperature°C"
-                        view?.findViewById<TextView>(R.id.text_weather)?.text = condition
-                        view?.findViewById<TextView>(R.id.text_weather_city)?.text = cityName
+                        binding.titleWeather.text = "$temperature°C"
+                        binding.textWeather.text = condition
+                        binding.textWeatherCity.text = cityName
                     } else {
                         Log.e("WeatherData", "Response body is null")
                     }
                 } else {
                     Log.e("WeatherData", "Response not successful")
                 }
-
             }
 
             override fun onFailure(call: Call<WeatherResponse>, t: Throwable) {
                 Log.e("WeatherData", "API call failed", t)
             }
-
         })
     }
 }
