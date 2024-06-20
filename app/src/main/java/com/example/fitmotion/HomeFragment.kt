@@ -43,6 +43,7 @@ class HomeFragment : Fragment() {
         ViewModelFactory.getInstance(requireContext())
     }
 
+
     private lateinit var binding: FragmentHomeBinding
 
     override fun onCreateView(
