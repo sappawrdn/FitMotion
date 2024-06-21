@@ -1,4 +1,4 @@
-package com.example.fitmotion
+package com.example.fitmotion.Friend
 
 import android.content.Intent
 import android.os.Bundle
@@ -12,11 +12,8 @@ import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.fitmotion.Friend.AddFriendActivity
-import com.example.fitmotion.Friend.Friend
-import com.example.fitmotion.Friend.FriendApiConfig
-import com.example.fitmotion.Friend.FriendsResponse
-import com.example.fitmotion.Friend.ListFriendAdapter
+import com.example.fitmotion.FriendRequestsActivity
+import com.example.fitmotion.R
 import com.example.fitmotion.UserHelper.UserPreference
 import com.example.fitmotion.UserHelper.dataStore
 import kotlinx.coroutines.CoroutineScope

@@ -21,7 +21,7 @@
         tools:layout="@layout/fragment_sensor" />
     <fragment
         android:id="@+id/friendsFragment"
-        android:name="com.example.fitmotion.FriendsFragment"
+        android:name="com.example.fitmotion.Friend.FriendsFragment"
         android:label="Friend"
         tools:layout="@layout/fragment_friends" />
     <fragment
