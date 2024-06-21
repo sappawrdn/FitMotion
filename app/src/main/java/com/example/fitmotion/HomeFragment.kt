@@ -2,6 +2,7 @@ package com.example.fitmotion
 
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -21,13 +22,17 @@ import com.example.fitmotion.Weather.WeatherResponse
 import com.example.fitmotion.databinding.FragmentHomeBinding
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.observe
+import com.example.fitmotion.Profile.ProfilePicProvider
 import com.example.fitmotion.UserHelper.UserRepository
 import com.example.fitmotion.core.CoreApiConfig
 import com.example.fitmotion.core.CoreApiResponse
 import com.example.fitmotion.daily.DailyResponse
 import com.example.fitmotion.main.MainViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
@@ -67,6 +72,8 @@ class HomeFragment : Fragment() {
             }
         }
 
+        loadImageUri()
+
         fetchWeatherData("Medan")
         fetchHealthCheckData()
 
@@ -87,6 +94,20 @@ class HomeFragment : Fragment() {
         val tvDetails = view.findViewById<TextView>(R.id.tv_details)
         tvDetails.setOnClickListener {
             startActivity(Intent(requireContext(), DetailsActivity::class.java))
+        }
+    }
+
+    private fun loadImageUri() {
+        CoroutineScope(Dispatchers.IO).launch {
+            val profile = ProfilePicProvider.getDatabase(requireContext()).profilePicDao().getProfile(1)
+            withContext(Dispatchers.Main) {
+                if (profile != null) {
+                    val imageUri = Uri.parse(profile.imageUri)
+                    binding.profileCircle.setImageURI(imageUri)
+                } else {
+                    binding.profileCircle.setImageResource(R.drawable.ic_profile) // Set default image resource
+                }
+            }
         }
     }
 

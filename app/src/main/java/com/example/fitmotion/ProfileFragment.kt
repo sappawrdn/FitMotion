@@ -2,6 +2,7 @@ package com.example.fitmotion
 
 import android.app.AlertDialog
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,12 +13,14 @@ import android.widget.LinearLayout
 import androidx.activity.viewModels
 import androidx.fragment.app.viewModels
 import com.example.fitmotion.Factory.ViewModelFactory
+import com.example.fitmotion.Profile.ProfilePicProvider
 import com.example.fitmotion.Welcome.WelcomeActivity
 import com.example.fitmotion.databinding.FragmentProfileBinding
 import com.example.fitmotion.main.MainViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class ProfileFragment : Fragment() {
     private val viewModel by viewModels<MainViewModel> {
@@ -37,6 +40,8 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        loadImageUri()
 
         // Find the edit button from the layout
         val editButton = binding.buttonEdit
@@ -90,6 +95,20 @@ class ProfileFragment : Fragment() {
 
         // Show the dialog
         dialog.show()
+    }
+
+    private fun loadImageUri() {
+        CoroutineScope(Dispatchers.IO).launch {
+            val profile = ProfilePicProvider.getDatabase(requireContext()).profilePicDao().getProfile(1)
+            withContext(Dispatchers.Main) {
+                if (profile != null) {
+                    val imageUri = Uri.parse(profile.imageUri)
+                    binding.profileImage.setImageURI(imageUri)
+                } else {
+                    binding.profileImage.setImageResource(R.drawable.ic_profile) // Set default image resource
+                }
+            }
+        }
     }
 
     companion object {
