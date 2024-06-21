@@ -6,15 +6,17 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface FriendApiService {
-    @GET("/api/v1/friends/invite/{friend_username}")
-    fun sendFriendRequest(@Query("friend_username") friendUsername: String): Call<ResponseBody>
-
-    @GET("/api/v1/friends/accept")
-    fun acceptFriendRequest(@Query("request_id") requestId: Int): Call<ResponseBody>
-
-    @GET("/api/v1/users/requests")
-    fun getFriendRequests(): Call<List<FriendRequest>>
-
+//    @GET("/api/v1/friends/invite/{friend_username}")
+//    fun sendFriendRequest(@Query("friend_username") friendUsername: String): Call<ResponseBody>
+//
+//    @GET("/api/v1/friends/accept")
+//    fun acceptFriendRequest(@Query("request_id") requestId: Int): Call<ResponseBody>
+//
+//    @GET("/api/v1/users/requests")
+//    fun getFriendRequests(): Call<List<FriendRequest>>
     @GET("/api/v1/users/friends")
     fun getFriendsList(): Call<FriendsResponse>
+
+    @GET("/api/v1/users/search")
+    fun searchUsers(@Query("username") username: String): Call<List<UserResponse>>
 }
