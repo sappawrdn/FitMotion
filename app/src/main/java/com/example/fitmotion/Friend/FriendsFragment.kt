@@ -10,6 +10,7 @@ import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fitmotion.FriendRequestsActivity
@@ -46,8 +47,18 @@ class FriendsFragment : Fragment() {
         userPreference = UserPreference.getInstance(requireContext().dataStore)
 
         recyclerView = view.findViewById(R.id.friends_list)
-        recyclerView.layoutManager = LinearLayoutManager(activity)
-        friendsList = mutableListOf()
+        val layoutManager = LinearLayoutManager(activity)
+        recyclerView.layoutManager = layoutManager
+        val itemDecoration = DividerItemDecoration(activity, layoutManager.orientation)
+        recyclerView.addItemDecoration(itemDecoration)
+//        friendsList = mutableListOf()
+
+        val friendsList = listOf(
+            Friend(R.drawable.frienddummy, "Jon"),
+            Friend(R.drawable.frienddummy_2, "Tyrion"),
+            Friend(R.drawable.frienddummy_3, "Jamie"),
+        )
+
         adapter = ListFriendAdapter(friendsList)
         recyclerView.adapter = adapter
 
@@ -73,7 +84,7 @@ class FriendsFragment : Fragment() {
                 return false
             }
         })
-        fetchFriends()
+//        fetchFriends()
     }
 
     private fun fetchFriends() {
@@ -83,7 +94,7 @@ class FriendsFragment : Fragment() {
 
                 withContext(Dispatchers.Main) {
                     if (token.isEmpty()) {
-                        Toast.makeText(activity, "No auth token found", Toast.LENGTH_SHORT).show()
+//                        Toast.makeText(activity, "No auth token found", Toast.LENGTH_SHORT).show()
                         return@withContext
                     }
 
@@ -103,18 +114,18 @@ class FriendsFragment : Fragment() {
 
                                 }
                             } else {
-                                Toast.makeText(
-                                    activity,
-                                    "Failed to fetch friends: ${response.message()}",
-                                    Toast.LENGTH_SHORT
-                                ).show()
+//                                Toast.makeText(
+//                                    activity,
+//                                    "Failed to fetch friends: ${response.message()}",
+//                                    Toast.LENGTH_SHORT
+//                                ).show()
                                 Log.e("FriendsFragment", "Failed to fetch friends: ${response.message()}")
                             }
                         }
 
 
                         override fun onFailure(call: Call<FriendsResponse>, t: Throwable) {
-                            Toast.makeText(activity, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
+//                            Toast.makeText(activity, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
                             Log.e("FriendsFragment", "Error: ${t.message}", t)
                         }
                     })

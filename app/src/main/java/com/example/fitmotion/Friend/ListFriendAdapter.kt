@@ -32,11 +32,11 @@ class ListFriendAdapter(private val friends: List<Friend>) : RecyclerView.Adapte
 
 //        // Menampilkan gambar teman menggunakan Glide atau library lainnya
 //        // Ganti `friend.imageUrl` dengan properti yang sesuai dari model `Friend`
-//        Glide.with(holder.itemView)
-//            .load(friend.imageUrl) // Ganti dengan properti yang sesuai dari model Friend
-//            .placeholder(R.drawable.ic_account) // Placeholder jika gambar sedang dimuat
-//            .error(R.drawable.ic_placeholder) // Gambar yang akan ditampilkan jika ada kesalahan
-//            .into(holder.userImageView)
+        Glide.with(holder.itemView)
+            .load(friend.avatar) // Ganti dengan properti yang sesuai dari model Friend
+            .placeholder(R.drawable.ic_account) // Placeholder jika gambar sedang dimuat
+            .error(R.drawable.ic_placeholder) // Gambar yang akan ditampilkan jika ada kesalahan
+            .into(holder.userImageView)
 //
 //        // Tambahkan onClickListener pada tombol 'more' jika diperlukan
 //        holder.moreButton.setOnClickListener {

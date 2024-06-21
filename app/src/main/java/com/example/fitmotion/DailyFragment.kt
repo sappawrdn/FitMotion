@@ -88,12 +88,12 @@ class DailyFragment : Fragment() {
         val barChart = binding.barChart
 
         val entries = mutableListOf<BarEntry>().apply {
-            add(BarEntry(0f, data.sit_min.toFloat()))
-            add(BarEntry(1f, data.stand_min.toFloat()))
-            add(BarEntry(2f, data.walk_min.toFloat()))
-            add(BarEntry(3f, data.jogging_min.toFloat()))
-            add(BarEntry(4f, data.upstair_min.toFloat()))
-            add(BarEntry(5f, data.downstair_min.toFloat()))
+            add(BarEntry(0f, 130f))
+            add(BarEntry(1f, 15f))
+            add(BarEntry(2f, 10f))
+            add(BarEntry(3f, 5f))
+            add(BarEntry(4f, 4f))
+            add(BarEntry(5f, 4f))
         }
 
 

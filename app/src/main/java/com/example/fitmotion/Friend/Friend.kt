@@ -12,8 +12,8 @@ import com.google.gson.annotations.SerializedName
 //)
 
 data class Friend(
-    @SerializedName("id")
-    val id: Int,
+    @SerializedName("avatar")
+    val avatar: Int,
     @SerializedName("username")
     val username: String
 )

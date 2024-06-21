@@ -10,9 +10,9 @@ interface ProfilePicDao {
     @Insert
     suspend fun insert(profilepic: ProfilePic)
 
-    @Query("SELECT * FROM profilepic WHERE id = :id LIMIT 1")
+    @Query("SELECT * FROM profilepic WHERE id = :id")
     suspend fun getProfile(id: Int): ProfilePic?
 
-    @Query("DELETE FROM profilepic WHERE id = :id LIMIT 1")
+    @Query("DELETE FROM profilepic WHERE id = :id")
     suspend fun deleteProfile(id: Int)
 }

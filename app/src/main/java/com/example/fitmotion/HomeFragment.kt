@@ -2,6 +2,8 @@ package com.example.fitmotion
 
 
 import android.content.Intent
+import android.Manifest
+import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -11,6 +13,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -78,12 +81,12 @@ class HomeFragment : Fragment() {
         fetchHealthCheckData()
 
         val activities = listOf(
-            ActivitiesItem(R.drawable.sit, "sit", "60 min"),
-            ActivitiesItem(R.drawable.stand, "stand", "60 min"),
-            ActivitiesItem(R.drawable.walk, "walk", "60 min"),
-            ActivitiesItem(R.drawable.sit, "jogging", "60 min"),
-            ActivitiesItem(R.drawable.stand, "Up Stairs", "60 min"),
-            ActivitiesItem(R.drawable.walk, "Down Stairs", "60 min")
+            ActivitiesItem(R.drawable.sit, "sit", "130 min"),
+            ActivitiesItem(R.drawable.stand, "stand", "15 min"),
+            ActivitiesItem(R.drawable.walk, "walk", "10 min"),
+            ActivitiesItem(R.drawable.sit, "jogging", "5 min"),
+            ActivitiesItem(R.drawable.stand, "Up Stairs", "4 min"),
+            ActivitiesItem(R.drawable.walk, "Down Stairs", "4 min")
         )
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.rv_activities)
@@ -100,12 +103,24 @@ class HomeFragment : Fragment() {
     private fun loadImageUri() {
         CoroutineScope(Dispatchers.IO).launch {
             val profile = ProfilePicProvider.getDatabase(requireContext()).profilePicDao().getProfile(1)
-            withContext(Dispatchers.Main) {
-                if (profile != null) {
-                    val imageUri = Uri.parse(profile.imageUri)
-                    binding.profileCircle.setImageURI(imageUri)
+            profile?.let {
+                val imageUri = Uri.parse(it.imageUri)
+                if (ContextCompat.checkSelfPermission(
+                        requireContext(),
+                        Manifest.permission.READ_EXTERNAL_STORAGE
+                    ) == PackageManager.PERMISSION_GRANTED
+                ) {
+                    CoroutineScope(Dispatchers.Main).launch {
+                        requireContext().contentResolver.takePersistableUriPermission(
+                            imageUri,
+                            Intent.FLAG_GRANT_READ_URI_PERMISSION
+                        )
+                        binding.profileCircle.setImageURI(imageUri)
+                    }
                 } else {
-                    binding.profileCircle.setImageResource(R.drawable.ic_profile) // Set default image resource
+                    // Handle case where permission is not granted
+                    Log.e("HomeFragment", "Permission not granted for reading external storage")
+                    // You might want to request permission again or show an explanation
                 }
             }
         }

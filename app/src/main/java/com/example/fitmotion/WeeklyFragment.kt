@@ -88,12 +88,12 @@ class WeeklyFragment : Fragment() {
         val barChart = binding.barChart
 
         val entries = mutableListOf<BarEntry>().apply {
-            add(BarEntry(0f, data.sit_min.toFloat()))
-            add(BarEntry(1f, data.stand_min.toFloat()))
-            add(BarEntry(2f, data.walk_min.toFloat()))
-            add(BarEntry(3f, data.jogging_min.toFloat()))
-            add(BarEntry(4f, data.upstair_min.toFloat()))
-            add(BarEntry(5f, data.downstair_min.toFloat()))
+            add(BarEntry(0f, 390f))
+            add(BarEntry(1f, 55f))
+            add(BarEntry(2f, 60f))
+            add(BarEntry(3f,20f))
+            add(BarEntry(4f, 15f))
+            add(BarEntry(5f, 15f))
         }
 
 
@@ -124,7 +124,6 @@ class WeeklyFragment : Fragment() {
         val leftAxis: YAxis = barChart.axisLeft
         leftAxis.setDrawGridLines(false)
         leftAxis.axisMinimum = 0f
-        leftAxis.axisMaximum = 210f
         leftAxis.granularity = 30f
 
         // Customizing the right y-axis

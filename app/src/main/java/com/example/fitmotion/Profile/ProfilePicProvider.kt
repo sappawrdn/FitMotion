@@ -11,7 +11,7 @@ object ProfilePicProvider {
             val instance = Room.databaseBuilder(
                 context.applicationContext,
                 ProfilePicDatabase::class.java,
-                "app_database"
+                "app_database2"
             ).build()
             INSTANCE = instance
             instance

@@ -1,18 +1,20 @@
 package com.example.fitmotion.Achievement
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
-import androidx.fragment.app.Fragment
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fitmotion.R
 
 class AdapterAchievement(
     private val achievements: List<ModelAchievement>,
-    private val parentFragment: Fragment
+    private val achievementClickListener: AchievementClickListener
 ) : RecyclerView.Adapter<AdapterAchievement.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -25,18 +27,20 @@ class AdapterAchievement(
                 val position = adapterPosition
                 if (position != RecyclerView.NO_POSITION) {
                     val achievement = achievements[position]
-                    showDetailDialog(achievement)
+                    achievementClickListener.onAchievementClicked(achievement)
                 }
             }
 
             cardView.setOnClickListener {
-                cardView.setCardBackgroundColor(
-                    itemView.context.getColor(R.color.cream)
-                )
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    val achievement = achievements[position]
+                    achievementClickListener.onAchievementClicked(achievement)
+                }
+                cardView.setCardBackgroundColor(ContextCompat.getColor(itemView.context, R.color.cream))
+
                 itemView.postDelayed({
-                    cardView.setCardBackgroundColor(
-                        itemView.context.getColor(android.R.color.white)
-                    )
+                    cardView.setCardBackgroundColor(ContextCompat.getColor(itemView.context, android.R.color.white))
                 }, 200)
             }
         }
@@ -48,19 +52,15 @@ class AdapterAchievement(
             achievementImage.setImageResource(drawableResId)
 
             if (!achievement.isAchieved) {
-                achievementImage.setColorFilter(itemView.context.getColor(R.color.gray))
+                val grayColor = ContextCompat.getColor(itemView.context, R.color.gray)
+                achievementImage.setColorFilter(grayColor)
             } else {
-                achievementImage.clearColorFilter()
+                achievementImage.colorFilter = null // Remove any previously applied color filter
             }
 
             achievementTitle.text = achievement.title
         }
 
-        private fun showDetailDialog(achievement: ModelAchievement) {
-            val description = itemView.context.getString(achievement.descriptionResId)
-            val dialogFragment = DetailsDialogFragment.newInstance(achievement.title, description)
-            dialogFragment.show(parentFragment.childFragmentManager, "DetailDialogFragment")
-        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -76,4 +76,5 @@ class AdapterAchievement(
     override fun getItemCount(): Int {
         return achievements.size
     }
+
 }
