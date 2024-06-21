@@ -81,12 +81,12 @@ class HomeFragment : Fragment() {
         fetchHealthCheckData()
 
         val activities = listOf(
-            ActivitiesItem(R.drawable.sit, "sit", "60 min"),
-            ActivitiesItem(R.drawable.stand, "stand", "60 min"),
-            ActivitiesItem(R.drawable.walk, "walk", "60 min"),
-            ActivitiesItem(R.drawable.sit, "jogging", "60 min"),
-            ActivitiesItem(R.drawable.stand, "Up Stairs", "60 min"),
-            ActivitiesItem(R.drawable.walk, "Down Stairs", "60 min")
+            ActivitiesItem(R.drawable.sit, "sit", "130 min"),
+            ActivitiesItem(R.drawable.stand, "stand", "15 min"),
+            ActivitiesItem(R.drawable.walk, "walk", "10 min"),
+            ActivitiesItem(R.drawable.sit, "jogging", "5 min"),
+            ActivitiesItem(R.drawable.stand, "Up Stairs", "4 min"),
+            ActivitiesItem(R.drawable.walk, "Down Stairs", "4 min")
         )
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.rv_activities)
