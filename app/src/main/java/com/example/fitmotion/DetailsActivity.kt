@@ -1,6 +1,7 @@
 package com.example.fitmotion
 
 import android.os.Bundle
+import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
@@ -43,6 +44,11 @@ class DetailsActivity : AppCompatActivity() {
                 tabLayout.selectTab(tabLayout.getTabAt(position))
             }
         })
+
+        val backButton = findViewById<ImageButton>(R.id.btn_back_detail)
+        backButton.setOnClickListener {
+            onBackPressed()
+        }
     }
 
     override fun onBackPressed() {

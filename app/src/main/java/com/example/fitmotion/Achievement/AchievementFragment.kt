@@ -22,7 +22,7 @@ class AchievementFragment : Fragment() {
 
         // Initialize RecyclerView
         achievementsRecyclerView = view.findViewById(R.id.achievements_rv)
-        achievementsRecyclerView.layoutManager = GridLayoutManager(context, 2)
+        achievementsRecyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
 
         // Define list of achievements
         val achievements = listOf(
@@ -38,19 +38,14 @@ class AchievementFragment : Fragment() {
             ModelAchievement("Nailed It", true, "bdg_nailedit", R.string.nailed_it),
             ModelAchievement("Go Beyond", false, "bdg_gobeyond", R.string.go_beyond),
             ModelAchievement("Fullmoon", false, "bdg_fullmoon", R.string.fullmoon),
-
         )
 
-        // Initialize adapter with achievements list
-        achievementAdapter = AdapterAchievement(achievements) { achievement ->
+        // Initialize Adapter with parentFragment
+        achievementAdapter = AdapterAchievement(achievements, this)
 
-        }
-
-        // Set adapter to RecyclerView
+        // Set Adapter to RecyclerView
         achievementsRecyclerView.adapter = achievementAdapter
 
         return view
     }
-
-
 }
